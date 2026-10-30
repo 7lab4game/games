@@ -3,15 +3,175 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>7lab4game · H5 试玩</title>
+  <title>试玩入口 · 7.lab</title>
   <style>
-    :root{color-scheme:dark;font-family:system-ui,-apple-system,"PingFang SC",sans-serif;background:#101620;color:#f1f4f8}
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:clamp(24px,6vw,72px);background:radial-gradient(ellipse at 15% 5%,#21334a 0,transparent 45%),#101620}
-    main{max-width:760px;margin:auto}p{color:#a9bacd}h1{font-size:clamp(32px,7vw,56px);margin:.2em 0 .8em}nav{display:grid;gap:14px}a{display:block;padding:20px 22px;border:1px solid #3d4b5c;border-radius:16px;background:#192330;color:inherit;text-decoration:none}a:hover,a:focus-visible{border-color:#a8d3c2;background:#202f3a}strong,small{display:block}small{margin-top:6px;color:#a9bacd}
+    :root {
+      color-scheme: dark;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", sans-serif;
+      background: #101620;
+      color: #f1f4f8;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: clamp(20px, 6vw, 72px);
+      background: radial-gradient(ellipse at 15% 5%, #21334a 0, transparent 45%), #101620;
+    }
+
+    .brand {
+      position: absolute;
+      top: clamp(18px, 3vw, 30px);
+      left: clamp(20px, 6vw, 72px);
+      display: inline-flex;
+      align-items: baseline;
+      color: #f1f4f8;
+      font-size: 22px;
+      font-weight: 650;
+      letter-spacing: -.055em;
+      line-height: 1;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-lab { color: #8797aa; font-weight: 550; }
+    .brand:focus-visible { outline: 2px solid #9aafc4; outline-offset: 5px; border-radius: 3px; }
+
+    main {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding-top: clamp(46px, 7vw, 66px);
+    }
+
+    h1 {
+      margin: 0 0 30px;
+      font-size: clamp(32px, 7vw, 52px);
+      font-weight: 650;
+      letter-spacing: -.045em;
+      line-height: 1.12;
+    }
+
+    nav { display: grid; gap: 16px; }
+
+    .game-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      column-gap: 14px;
+      min-height: 76px;
+      padding: 17px 20px;
+      border: 1px solid #3d4b5c;
+      border-radius: 14px;
+      background: #192330;
+      color: inherit;
+      text-decoration: none;
+      transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .game-info {
+      display: flex;
+      min-width: 0;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 10px;
+    }
+
+    .game-name {
+      flex: 0 0 auto;
+      color: #f1f4f8;
+      font-size: 18px;
+      font-weight: 620;
+      letter-spacing: -.025em;
+      line-height: 1.35;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      padding: 4px 7px;
+      border: 1px solid #435267;
+      border-radius: 6px;
+      color: #9eacbe;
+      font-size: 12px;
+      font-weight: 450;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .version {
+      justify-self: end;
+      color: #8695a8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+
+    .game-card:hover {
+      border-color: #697d94;
+      background: #1d2a39;
+      transform: translateY(-1px);
+    }
+
+    .game-card:focus-visible {
+      outline: 2px solid #9aafc4;
+      outline-offset: 3px;
+    }
+
+    .game-card:active { transform: scale(.995); }
+
+    @media (max-width: 420px) {
+      body { padding-right: 20px; padding-left: 20px; }
+      .brand { left: 20px; }
+      main { padding-top: 54px; }
+      h1 { margin-bottom: 25px; }
+      nav { gap: 14px; }
+      .game-card { column-gap: 10px; padding: 16px; }
+      .game-info { gap: 7px 8px; }
+      .game-name { font-size: 17px; }
+      .tag { padding: 4px 6px; font-size: 11px; }
+      .version { font-size: 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .game-card { transition: none; }
+    }
   </style>
 </head>
-<body><main><p>7lab4game · HTML5 Games</p><h1>试玩入口</h1><nav>
-<a href="lasser.html"><strong>Lasser</strong><small>主游戏候选 v0.2.1</small></a>
-<a href="1chocolate-0.2.html"><strong>以巧克力 · 0.2.x</strong><small>候选 v0.2.10.5</small></a>
-<a href="yicheng.html"><strong>一程</strong><small>桌面 0.6.x 候选 v0.6.2.3</small></a>
-</nav></main></body></html>
+<body>
+  <a class="brand" href="index.html" aria-label="7.lab，返回试玩入口首页"><span>7</span><span class="brand-lab">.lab</span></a>
+  <main>
+    <h1>试玩入口</h1>
+    <nav aria-label="游戏试玩入口">
+      <a class="game-card" href="lasser.html">
+        <span class="game-info">
+          <strong class="game-name">Lasser</strong>
+          <span class="tags"><span class="tag">激光消除</span><span class="tag">逻辑解谜</span></span>
+        </span>
+        <span class="version">v0.2.1</span>
+      </a>
+      <a class="game-card" href="1chocolate-0.2.html">
+        <span class="game-info">
+          <strong class="game-name">以巧克力</strong>
+          <span class="tags"><span class="tag">三消合成</span><span class="tag">叠层策略</span></span>
+        </span>
+        <span class="version">v0.2.10.5</span>
+      </a>
+      <a class="game-card" href="yicheng.html">
+        <span class="game-info">
+          <strong class="game-name">一程</strong>
+          <span class="tags"><span class="tag">路线规划</span><span class="tag">回合解谜</span></span>
+        </span>
+        <span class="version">v0.6.2.3</span>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
