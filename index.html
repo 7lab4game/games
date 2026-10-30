@@ -59,10 +59,14 @@
 
     .game-card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr) max-content;
+      grid-template-areas:
+        "name version"
+        "play play"
+        "skill skill";
       align-items: center;
       column-gap: 14px;
-      min-height: 76px;
+      row-gap: 8px;
       padding: 17px 20px;
       border: 1px solid #3d4b5c;
       border-radius: 14px;
@@ -74,16 +78,9 @@
       touch-action: manipulation;
     }
 
-    .game-info {
-      display: flex;
-      min-width: 0;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px 10px;
-    }
-
     .game-name {
-      flex: 0 0 auto;
+      grid-area: name;
+      min-width: 0;
       color: #f1f4f8;
       font-size: 18px;
       font-weight: 620;
@@ -91,7 +88,15 @@
       line-height: 1.35;
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tags {
+      display: flex;
+      min-width: 0;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tags--play { grid-area: play; }
+    .tags--skill { grid-area: skill; }
 
     .tag {
       padding: 4px 7px;
@@ -104,8 +109,16 @@
       white-space: nowrap;
     }
 
+    .tags--skill .tag {
+      border-color: transparent;
+      background: #263342;
+      color: #8999ac;
+    }
+
     .version {
+      grid-area: version;
       justify-self: end;
+      align-self: center;
       color: #8695a8;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 12px;
@@ -134,7 +147,7 @@
       h1 { margin-bottom: 25px; }
       nav { gap: 14px; }
       .game-card { column-gap: 10px; padding: 16px; }
-      .game-info { gap: 7px 8px; }
+      .game-card { row-gap: 7px; }
       .game-name { font-size: 17px; }
       .tag { padding: 4px 6px; font-size: 11px; }
       .version { font-size: 11px; }
@@ -151,25 +164,22 @@
     <h1>试玩入口</h1>
     <nav aria-label="游戏试玩入口">
       <a class="game-card" href="lasser.html">
-        <span class="game-info">
-          <strong class="game-name">Lasser</strong>
-          <span class="tags"><span class="tag">激光消除</span><span class="tag">逻辑解谜</span></span>
-        </span>
+        <strong class="game-name">Lasser</strong>
         <span class="version">v0.2.1</span>
+        <span class="tags tags--play"><span class="tag">激光消除</span><span class="tag">逻辑解谜</span></span>
+        <span class="tags tags--skill"><span class="tag">观察</span><span class="tag">顺序推理</span></span>
       </a>
       <a class="game-card" href="1chocolate-0.2.html">
-        <span class="game-info">
-          <strong class="game-name">以巧克力</strong>
-          <span class="tags"><span class="tag">三消合成</span><span class="tag">叠层策略</span></span>
-        </span>
+        <strong class="game-name">以巧克力</strong>
         <span class="version">v0.2.10.5</span>
+        <span class="tags tags--play"><span class="tag">三消合成</span><span class="tag">叠层策略</span></span>
+        <span class="tags tags--skill"><span class="tag">空间判断</span><span class="tag">容量管理</span></span>
       </a>
       <a class="game-card" href="yicheng.html">
-        <span class="game-info">
-          <strong class="game-name">一程</strong>
-          <span class="tags"><span class="tag">路线规划</span><span class="tag">回合解谜</span></span>
-        </span>
+        <strong class="game-name">一程</strong>
         <span class="version">v0.6.2.3</span>
+        <span class="tags tags--play"><span class="tag">路线规划</span><span class="tag">回合解谜</span></span>
+        <span class="tags tags--skill"><span class="tag">全局规划</span><span class="tag">回合计算</span></span>
       </a>
     </nav>
   </main>
