@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#F0E3D5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>以巧克力 · v0.2.10.6</title>
+<title>以巧克力 · v0.2.11.3</title>
 <style>
 :root{--cream:#FFF7ED;--ink:#68564E;--muted:#AA958A;--edge:#E9DCCF;--shell:#FFFAF4;--shell-hi:#fffdf7;--shadow:rgba(110,81,54,.13);--pink:#EBA7B0;--yellow:#EFD18A;--green:#B3D5AE;--purple:#BCA8DC;--blue:#9ACBDF;--peach:#dcaa7f;color-scheme:light}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}html{background:var(--cream)}body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif;color:var(--ink);touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}button{font:inherit;touch-action:manipulation;cursor:pointer}button:focus-visible{outline:3px solid #8fa9b2;outline-offset:3px}button:disabled{opacity:.32;cursor:default}.app{position:relative;isolation:isolate;width:100%;height:100vh;height:100dvh;max-width:650px;min-height:580px;margin:0 auto;overflow:hidden;display:flex;flex-direction:column;background:radial-gradient(ellipse 75% 37% at 14% 20%,#fffdfa 0,transparent 90%),radial-gradient(ellipse 80% 60% at 100% 68%,#f8e9d8 0,transparent 96%),var(--cream)}
@@ -225,6 +225,7 @@ html{background:#F0E3D5}
 .gesture-menu .choice{display:flex;gap:9px;align-items:center;padding:0;background:none!important;color:#967b68;
  border-radius:0;opacity:.77;transition:opacity .11s,transform .11s,color .11s}
 .gesture-menu .choice.active{color:#87542f;opacity:1;font-weight:750;transform:scale(1.085)}
+.gesture-menu .choice.is-disabled{opacity:.20;color:#927f72;transform:none;font-weight:650}
 .gesture-menu .choice .arrow{font-size:28px;line-height:1;font-weight:400}
 .gesture-menu .gesture-origin{width:39px;height:39px;border:2px solid #e6c49e;border-radius:50%;
  box-shadow:0 0 0 4px #fff8edb5,0 0 15px #e4b77d63;position:relative;flex:none}
@@ -254,7 +255,7 @@ html{background:#F0E3D5}
 .entry-action:active{transform:scale(.97)}.entry-micro{font-size:11px;letter-spacing:.1em;color:#ad9181;text-align:center;margin-top:8px;min-height:18px}
 .entry-screen.levels{background:radial-gradient(ellipse at 50% 20%,rgba(255,250,243,.96),rgba(250,239,225,.96));backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);align-items:stretch;justify-content:flex-start;padding:calc(31px + env(safe-area-inset-top)) 23px calc(25px + env(safe-area-inset-bottom))}
 .levels-top{display:flex;align-items:center;justify-content:space-between;min-height:46px}.levels-back{border:none;background:rgba(255,255,255,.6);border-radius:50%;width:42px;height:42px;font-size:20px;color:#957465;cursor:pointer}
-.levels-heading{font-family:'Hiragino Maru Gothic ProN','YouYuan','PingFang SC',sans-serif;font-weight:800;font-size:23px;letter-spacing:.06em;color:#8d695f}
+.levels-heading{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',system-ui,sans-serif;font-weight:800;font-size:23px;letter-spacing:.06em;color:#8d695f}
 .levels-sub{font-size:12px;color:#b0998a;text-align:center;margin:8px 0 28px}.level-list{display:flex;flex-direction:column;gap:0;max-width:430px;width:100%;margin:0 auto}
 .level-row{display:flex;align-items:center;gap:17px;padding:18px 5px;background:transparent;border:0;border-bottom:1px solid #d8c1b354;text-align:left;color:#8b7062;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .level-row:active{transform:scale(.988)}.level-number{font-family:ui-rounded,'Arial Rounded MT Bold',sans-serif;font-size:29px;color:#d1a08a;font-weight:750;width:47px;font-variant-numeric:tabular-nums}
@@ -270,8 +271,8 @@ html{background:#F0E3D5}
 .entry-screen.home .entry-action{width:65px;min-width:65px;height:64px;min-height:64px;display:flex;align-items:center;justify-content:center;padding:0;border-radius:20px;background:rgba(255,252,247,.90);border:1px solid #d6bbaaa8;color:#8e695b;box-shadow:0 4px 14px #957c631b}
 .entry-screen.home .entry-action.primary{background:rgba(255,252,247,.9);color:#8e695b}
 .entry-screen.home .entry-micro{position:absolute;bottom:calc(23px + env(safe-area-inset-bottom));left:0;right:0;text-align:center}
-.app.is-landing .board-space{transform:translateY(clamp(66px,12vh,114px))}
-@media(max-height:710px){.entry-screen.home .entry-logo{margin-top:clamp(18px,4vh,42px)}.entry-screen.home .entry-actions{margin-top:18px}.entry-screen.home .entry-action{width:54px;min-width:54px;height:54px;min-height:54px;border-radius:17px}.app.is-landing .board-space{transform:translateY(72px)}}
+.app.is-landing .board-space{transform:translateY(clamp(152px,23vh,214px))}
+@media(max-height:710px){.entry-screen.home .entry-logo{margin-top:clamp(18px,4vh,42px)}.entry-screen.home .entry-actions{margin-top:18px}.entry-screen.home .entry-action{width:54px;min-width:54px;height:54px;min-height:54px;border-radius:17px}.app.is-landing .board-space{transform:translateY(clamp(104px,17vh,135px))}}
 
 /* v0.2.10.5: two welcome lines reuse the approved subtitle style. */
 .teach-card.welcome-line{width:min(310px,calc(100% - 32px));max-width:none;opacity:1!important;animation:none!important;padding:8px 4px;background:transparent!important;border:0!important;box-shadow:none!important}
@@ -279,7 +280,7 @@ html{background:#F0E3D5}
 .teach-card.welcome-line .teach-continue{margin-top:16px}
 .teach-spot:has(+ .teach-card.welcome-line) .teach-defocus{opacity:1!important;animation:none!important;--focus-blur:2.1px;--focus-tint:.032}
 
-/* v0.2.10.6: gold onboarding only, separate from the three-layer tutorial. */
+/* v0.2.11.2: gold is a contextual hold-right action, with tutorial reveal before animations. */
 .gold-coach[hidden],.gold-use-hint[hidden]{display:none!important}
 .gold-coach{position:absolute;inset:0;z-index:67;background:rgba(246,230,208,.19);backdrop-filter:blur(1.7px);-webkit-backdrop-filter:blur(1.7px);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 18px clamp(190px,29dvh,266px);pointer-events:auto;text-align:center}
 .gold-coach .gold-coach-text{max-width:290px;white-space:pre-line;font-size:14px;font-weight:730;line-height:1.85;color:#705544;text-shadow:0 1px 2px #fff7ed}
@@ -291,6 +292,19 @@ html{background:#F0E3D5}
 .gold-flight{position:fixed;z-index:69;width:51px;height:51px;pointer-events:none;filter:drop-shadow(0 0 8px #f4d88b9c);will-change:transform,opacity}
 @media(max-height:710px){.gold-coach{padding-bottom:178px}.gold-use-hint{bottom:220px}}
 @media(prefers-reduced-motion:reduce){.joker-slot.gold-fanfare{animation:none}}
+
+/* v0.2.11: one true 3D dish, including the gold joker (the legacy side button is hidden). */
+#jokerSlot{display:none!important}
+.tray-layout{justify-content:center}
+.columns{width:min(91vw,354px)}
+@media(max-height:710px){.columns{width:min(88vw,330px)}}
+.gold-piece-hit{pointer-events:none}
+/* Functional text uses the approved Apple/PingFang system; cover logotype is intentionally untouched. */
+.levels-heading,.levels-sub,.level-name,.level-info,.levels-footnote,.dialog,.teach-card,.gold-coach,.gold-use-hint{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',system-ui,sans-serif}
+
+.gold-coach{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;isolation:isolate}
+.gold-coach-defocus{position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(246,230,208,.15);backdrop-filter:blur(1.7px);-webkit-backdrop-filter:blur(1.7px);clip-path:url(#goldFocusClip);-webkit-clip-path:url(#goldFocusClip)}
+.gold-coach-text,.gold-coach button{position:relative;z-index:1}
 </style>
 
 
@@ -322,7 +336,7 @@ html{background:#F0E3D5}
     <div class="tray-panel">
       <div class="tray-layout">
         <div id="columns" class="columns" aria-label="五块容量的立体巧克力托盘"><div id="dishHitLayer" class="dish-hit-layer"></div></div>
-        <button id="jokerSlot" class="joker-slot" type="button" aria-label="万能巧克力槽" disabled>
+        <button id="jokerSlot" class="joker-slot" type="button" aria-label="金色巧克力" disabled hidden>
           <span class="joker-body"><span class="joker-empty">✧</span></span>
           <span class="joker-mark">✦</span>
         </button>
@@ -336,7 +350,7 @@ html{background:#F0E3D5}
 
     </nav>
   </section>
-  <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><clipPath id="teachFocusClip" clipPathUnits="userSpaceOnUse"><path id="teachBlurPath" clip-rule="evenodd" fill-rule="evenodd"/></clipPath><clipPath id="gestureFocusClip" clipPathUnits="userSpaceOnUse"><path id="gestureBlurPath" clip-rule="evenodd" fill-rule="evenodd"/></clipPath></defs></svg>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><clipPath id="teachFocusClip" clipPathUnits="userSpaceOnUse"><path id="teachBlurPath" clip-rule="evenodd" fill-rule="evenodd"/></clipPath><clipPath id="gestureFocusClip" clipPathUnits="userSpaceOnUse"><path id="gestureBlurPath" clip-rule="evenodd" fill-rule="evenodd"/></clipPath><clipPath id="goldFocusClip" clipPathUnits="userSpaceOnUse"><path id="goldBlurPath" clip-rule="evenodd" fill-rule="evenodd"/></clipPath></defs></svg>
   
   <div id="teachSpot" class="teach-spot" hidden aria-hidden="true"><div class="teach-defocus" id="teachDefocus"></div><div class="teach-shade" data-side="top"></div><div class="teach-shade" data-side="left"></div><div class="teach-shade" data-side="right"></div><div class="teach-shade" data-side="bottom"></div></div>
   <section id="teachCard" class="teach-card" hidden aria-live="polite"><div class="teach-count" id="teachCount"></div><p id="teachText"></p><button id="teachContinue" class="teach-continue" type="button" hidden>继续</button></section>
@@ -370,10 +384,27 @@ window.CHOCOLATE_LEVELS = [{"id":1,"cap":5,"layers":[{"size":2,"target":null,"in
 
 </script>
 <script>
+/* Centralized preview persistence. Build ID, save shape and content compatibility are independent. */
+(function(){'use strict';
+ const manifest=Object.freeze({build:'0.2.11.4',channel:'preview',schema:2,rules:3,levels:2,tutorial:5});
+ const prefix=`choco:${manifest.channel}:${manifest.build}:`;
+ const allowed=new Set(['run','profile','sound','haptics','onboarding','gold-created','gold-use']);
+ const key=name=>{if(!allowed.has(name))throw Error('Unknown chocolate save field: '+name);return prefix+name};
+ const read=name=>{const k=key(name);try{return localStorage.getItem(k)}catch{return null}};
+ const write=(name,value)=>{const k=key(name);try{localStorage.setItem(k,String(value));return true}catch(e){console.warn('Save unavailable',e);return false}};
+ const remove=name=>{const k=key(name);try{localStorage.removeItem(k);return true}catch{return false}};
+ const json=(name,fallback=null)=>{const raw=read(name);if(raw===null)return fallback;try{return JSON.parse(raw)}catch{return fallback}};
+ const writeJSON=(name,value)=>write(name,JSON.stringify(value));
+ const runMeta=()=>({schema:manifest.schema,rules:manifest.rules,levels:manifest.levels,build:manifest.build});
+ const compatibleRun=meta=>!!meta&&meta.schema===manifest.schema&&meta.rules===manifest.rules&&meta.levels===manifest.levels&&meta.build===manifest.build;
+ window.ChocoSave=Object.freeze({manifest,prefix,key,read,write,remove,json,writeJSON,runMeta,compatibleRun});
+})();
+</script>
+<script>
 /* Adapted from the original sound palette in 《一程》 v8.0.2. No BGM; only gesture-unlocked synthesized sound. */
 window.ChocoSound=class ChocoSound {
  constructor(){this.context=null;this.bus=null;this.compressor=null;this.master=null;this.muted=false;
-  try{this.muted=localStorage.getItem('chocolate-muted')==='1'}catch{}
+  this.muted=window.ChocoSave.read('sound')==='0';
  }
  unlock(){if(this.muted)return;try{
   if(!this.context){
@@ -391,15 +422,19 @@ window.ChocoSound=class ChocoSound {
    this.master=ctx.createGain();this.master.gain.value=1.23;
    this.bus.connect(this.compressor);this.compressor.connect(this.master);this.master.connect(ctx.destination);
   }
-  if(this.context.state==='suspended'){const p=this.context.resume();p?.catch?.(()=>{});}
+  if(this.context.state==='suspended'||this.context.state==='interrupted'){const p=this.context.resume();p?.catch?.(()=>{});}
  }catch(e){this.context=null;this.bus=null;this.compressor=null;this.master=null;}}
- toggle(){this.muted=!this.muted;try{localStorage.setItem('chocolate-muted',this.muted?'1':'0')}catch{}
+ toggle(){this.muted=!this.muted;window.ChocoSave.write('sound',this.muted?'0':'1');
   if(!this.muted)this.unlock();return this.muted;}
  // All voices feed one modest compressor. The 3D contact moment remains timed by the caller.
- play(name,depth=0){if(this.muted||!this.context||this.context.state!=='running'||!this.bus)return;
+ play(name,depth=0){if(this.muted)return;
+   if(!this.context||this.context.state!=='running'||!this.bus){
+    this.unlock();if(this.context&&this.context.state!=='running'){const pending=this.context.resume();pending?.then?.(()=>{if(!this.muted&&this.context?.state==='running')this.play(name,depth)}).catch?.(()=>{});}
+    return;
+   }
   const ctx=this.context;
-  const presets={pick:[[540,.075,.021]],merge:[[340,.12,.017],[475,.20,.014]],clear:[[460,.09,.026],[580,.12,.026],[760,.18,.018]],joker:[[410,.10,.022],[615,.13,.019],[820,.22,.016]],wild:[[560,.13,.021],[820,.22,.020]],reveal:[[515,.11,.014],[660,.2,.015]],win:[[480,.12,.016],[625,.13,.016],[830,.23,.016]],bad:[[205,.12,.018]],hint:[[760,.12,.012]]};
-  const boost={pick:1.14,merge:1.55,clear:1.53,joker:1.48,wild:1.42,reveal:1.07,win:1.16,bad:1,hint:1}[name]||1;
+  const presets={pick:[[540,.075,.021]],merge:[[340,.12,.017],[475,.20,.014]],clear:[[460,.09,.026],[580,.12,.026],[760,.18,.018]],joker:[[410,.10,.022],[615,.13,.019],[820,.22,.016]],wild:[[560,.13,.021],[820,.22,.020]],'gold-select':[[640,.075,.016],[900,.17,.013]],'gold-gift':[[465,.12,.017],[760,.19,.014]],'gold-birth':[[450,.09,.021],[680,.16,.020],[920,.24,.014]],'gold-release':[[350,.095,.020],[710,.16,.022],[1070,.20,.014]],reveal:[[515,.11,.014],[660,.2,.015]],win:[[480,.12,.016],[625,.13,.016],[830,.23,.016]],bad:[[205,.12,.018]],hint:[[760,.12,.012]]};
+  const boost={pick:1.14,merge:1.55,clear:1.53,joker:1.48,wild:1.42,reveal:1.07,win:1.16,bad:1,hint:1,'gold-select':1.35,'gold-birth':1.28,'gold-release':1.38,'gold-gift':1.24}[name]||1;
   const t=ctx.currentTime,notes=presets[name]||[];
   notes.forEach(([f,d,vol],i)=>{
    const at=t+i*.060,osc=ctx.createOscillator(),gain=ctx.createGain();
@@ -411,6 +446,17 @@ window.ChocoSound=class ChocoSound {
    gain.gain.exponentialRampToValueAtTime(.0001,at+d);
    osc.connect(gain);gain.connect(this.bus);osc.start(at);osc.stop(at+d+.01);
   });
+  // The gold selection has a short glassy, upward shimmer; birth/release
+  // sound like reward and energy transfer, without raising ordinary SFX levels.
+  if(['gold-select','gold-birth','gold-release','gold-gift'].includes(name)){
+   const o=ctx.createOscillator(),g=ctx.createGain(),start=t+.024;
+   o.type='triangle';const f=name==='gold-release'?1180:name==='gold-birth'?930:1050;
+   o.frequency.setValueAtTime(f,start);
+   o.frequency.exponentialRampToValueAtTime(name==='gold-release'?610:f*1.35,start+.14);
+   g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(.011,start+.009);
+   g.gain.exponentialRampToValueAtTime(.0001,start+.16);
+   o.connect(g);g.connect(this.bus);o.start(start);o.stop(start+.17);
+  }
   if(name==='joker'||name==='wild'){
    const at=t+(name==='joker'?.105:.04),duration=name==='joker'?.26:.17;
    const tone=ctx.createOscillator(),env=ctx.createGain();tone.type='sine';
@@ -451,7 +497,7 @@ window.ChocoHaptics=class ChocoHaptics {
   this.ios=this.isIOS&&!this.android;
   this.supported=this.android||this.ios;
   this.enabled=true;this.label=null;this.switchInput=null;this.lastPulse=-Infinity;
-  try{this.enabled=localStorage.getItem('1chocolate-haptics')!=='0'}catch{}
+  this.enabled=window.ChocoSave.read('haptics')!=='0';
  }
  setupIOS(){
   if(!this.ios)return false;
@@ -468,7 +514,7 @@ window.ChocoHaptics=class ChocoHaptics {
   return true;
  }
  toggle(){this.enabled=!this.enabled;
-  try{localStorage.setItem('1chocolate-haptics',this.enabled?'1':'0')}catch{}
+  window.ChocoSave.write('haptics',this.enabled?'1':'0');
   if(!this.enabled&&this.android){try{navigator.vibrate(0)}catch{}}
   return this.enabled;
  }
@@ -509,7 +555,7 @@ class ChocolateEngine {
   if(action==='pick')return this.total()<this.currentGame().cap&&!!this.getCard(lvOrId);
   if(action==='merge')return lvOrId>=1&&lvOrId<MAX&&t[lvOrId]>=2;
   if(action==='clear')return lvOrId>=1&&lvOrId<=MAX&&t[lvOrId]>=3;
-  if(action==='wild-clear')return this.state.joker===1&&lvOrId>=1&&lvOrId<=MAX&&t[lvOrId]>=2;
+  if(action==='wild-clear')return this.state.joker===1&&lvOrId>=1&&lvOrId<=MAX&&t[lvOrId]===2;
   return false;
  }
  apply(action,value){if(!this.can(action,value))return null;const before=copy(this.state);this.history.push(before);
@@ -529,7 +575,7 @@ class ChocolateEngine {
  }
  undo(){if(!this.history.length)return null;this.state=this.history.pop();return copy(this.state)}
  resetStage(){this.state=copy(this.checkpoint);this.history=[];return copy(this.state)}
- canContinue(){if(this.isStageComplete())return true;if(this.state.remaining.length&&this.total()<this.currentGame().cap)return true;return this.state.tray.some((n,i)=>n>=3||(i<MAX&&n>=2)||(this.state.joker===1&&i>0&&n>=2));}
+ canContinue(){if(this.isStageComplete())return true;if(this.state.remaining.length&&this.total()<this.currentGame().cap)return true;return this.state.tray.some((n,i)=>n>=3||(i<MAX&&n>=2)||(this.state.joker===1&&i>0&&n===2));}
  serialize(){return copy(this.state)}
  /** Precise stage solver. For testing the achievement endpoint, set desiredJ=1
   * on the FINAL layer. Returns a valid next operation, not an inflated solution count.
@@ -547,8 +593,8 @@ class ChocolateEngine {
    let actions=[];
    for(let lv=1;lv<=MAX;lv++){
     if(t[lv]>=3)actions.push({kind:'clear',lv});
-    if(lv<MAX&&t[lv]>=2&&(!window.CHOCOLATE_TUTORIAL_CLICK_ONLY||t[lv]===2))actions.push({kind:'merge',lv});
-    if(j===1&&t[lv]>=2)actions.push({kind:'wild-clear',lv});
+    if(lv<MAX&&t[lv]>=2)actions.push({kind:'merge',lv});
+    if(j===1&&t[lv]===2)actions.push({kind:'wild-clear',lv});
    }
    if(occ<cap)for(let lv=1;lv<=MAX;lv++)if(b[lv])actions.push({kind:'pick',lv});
    const priority=a=>a.kind==='clear'?110+a.lv:a.kind==='wild-clear'?105+a.lv:a.kind==='merge'?55+a.lv:10+t[a.lv]*12;
@@ -648,7 +694,7 @@ class ChocolateScene {
   this.renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});
   this.renderer.setClearColor(0x000000,0);this.renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));this.renderer.outputEncoding=T.sRGBEncoding;this.renderer.toneMapping=T.NoToneMapping;this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=T.PCFSoftShadowMap;
   this.canvas=this.renderer.domElement;this.canvas.setAttribute('aria-hidden','true');host.appendChild(this.canvas);
-  this.camera=new T.OrthographicCamera(-4,4,4,-4,.1,100);this.focus=new T.Vector3(0,.8,0);this.az=Math.PI/4;this.el=57*Math.PI/180;this.zoomFactor=1;this.projectionFocus=null;this.game=null;this.stage=0;
+  this.camera=new T.OrthographicCamera(-4,4,4,-4,.1,100);this.focus=new T.Vector3(0,.8,0);this.az=0;this.el=75*Math.PI/180;this.zoomFactor=1;this.projectionFocus=null;this.game=null;this.stage=0;
   this.ray=new T.Raycaster();this.pointer=new T.Vector2();this.hitMeshes=[];this.tiles=new Map();this.tweens=[];this.pointerPositions=new Map();this.drag=null;this.pinching=false;this.hasMoved=false;this.frame=0;this.last=0;
   // Studio key: preserve illuminated tops, deepen shaded sides and crevices.
   // Eight live render variants were compared before selecting this setup.
@@ -1029,10 +1075,11 @@ function threeStraight(ids){if(ids.length<3)return true;
  return [0,3,6].some(start=>[start,start+1,start+2].every(s=>ids.includes(s))) ||
  [0,1,2].some(col=>[col,col+3,col+6].every(s=>ids.includes(s)));
 }
-function bestLayout(tray,prior){
- const groups=[];for(let lv=1;lv<=5;lv++){const n=tray[lv];if(!n)continue;
+function bestLayout(tray,prior,joker=0){
+ const groups=[];for(let lv=1;lv<=6;lv++){const n=lv===6?joker:tray[lv];if(!n)continue;
   const candidate=COMBOS[n].filter(ids=>n<3||threeStraight(ids)).map(ids=>{
    let s=ids.reduce((acc,x)=>acc+CENTER_WEIGHTS[x],0)+pairScore(ids);
+   if(lv===6)s+=ids.reduce((acc,x)=>acc+(x===4?1.2:0),0);
    const before=prior[lv]||[];
    // Continuity is a strong preference, but never overrides a straight triple.
    if(before.length){let cost=Infinity;const permutations=(j,mask,acc)=>{if(j>=Math.min(before.length,ids.length)){cost=Math.min(cost,acc);return}
@@ -1043,7 +1090,8 @@ function bestLayout(tray,prior){
   });
   candidate.sort((a,b)=>a.s-b.s);groups.push({lv,n,candidates:candidate});
  }
- groups.sort((a,b)=>b.n-a.n);let best=Infinity,out={};
+ // Normal groups preserve their triple geometry; the gold piece takes a free anchor.
+ groups.sort((a,b)=>b.n-a.n||(a.lv===6?1:0)-(b.lv===6?1:0));let best=Infinity,out={};
  const dfs=(i,mask,score,cur)=>{if(i===groups.length){if(score<best){best=score;out={...cur}}return}
   const g=groups[i];for(const cand of g.candidates){if(mask&cand.mask)continue;
    const next=score+cand.s;if(next>=best)continue;
@@ -1061,7 +1109,7 @@ class ChocoDish {
   this.renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.45));this.renderer.outputEncoding=T.sRGBEncoding;this.renderer.setClearColor(0x000000,0);
   this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=T.PCFSoftShadowMap;
   this.renderer.domElement.setAttribute('aria-hidden','true');this.renderer.domElement.className='dish-canvas';host.appendChild(this.renderer.domElement);
-  this.camera=new T.OrthographicCamera(-4,4,3,-3,.1,50);this.camera.position.set(8,17.4,8);this.camera.lookAt(0,.12,0);
+  this.camera=new T.OrthographicCamera(-4,4,3,-3,.1,50);this.camera.position.set(0,19.32,5.18);this.camera.lookAt(0,.12,0);
   this.scene.add(new T.HemisphereLight(0xffffff,0xa79a8b,.61));
   const key=new T.DirectionalLight(0xfff6e9,.98);key.position.set(-4,9,6);key.castShadow=true;key.shadow.mapSize.set(512,512);key.shadow.camera.left=-5;key.shadow.camera.right=5;key.shadow.camera.top=5;key.shadow.camera.bottom=-5;key.shadow.bias=-.0003;key.shadow.normalBias=.014;this.scene.add(key);
   const bounce=new T.DirectionalLight(0xffe6ce,.15);bounce.position.set(5,6,-4);this.scene.add(bounce);
@@ -1075,7 +1123,19 @@ class ChocoDish {
   const ringShape=roundRect(3.90,.34);ringShape.holes.push(rimHole(3.55,.26));
   const rim=new T.Mesh(new T.ExtrudeGeometry(ringShape,{depth:.105,steps:1,bevelEnabled:true,bevelThickness:.028,bevelSize:.025,bevelSegments:2,curveSegments:9}),porcelain);
   rim.rotation.x=-Math.PI/2;rim.position.y=.015;rim.castShadow=true;rim.receiveShadow=true;this.scene.add(rim);
-  this.meshes={};this.locations={};this.previous={};this.animating=[];this.active=false;this.resize();
+  this.meshes={};this.locations={};this.previous={};this.animating=[];this.active=false;
+  // A soft, local contact shadow in place of gold receiving or casting hard realtime shadows.
+  const shadowCanvas=document.createElement('canvas');shadowCanvas.width=shadowCanvas.height=128;
+  const sc=shadowCanvas.getContext('2d'),grad=sc.createRadialGradient(64,64,8,64,64,63);
+  grad.addColorStop(0,'rgba(79,49,18,.25)');grad.addColorStop(.48,'rgba(79,49,18,.11)');grad.addColorStop(1,'rgba(79,49,18,0)');
+  sc.fillStyle=grad;sc.fillRect(0,0,128,128);
+  this.goldShadow=new T.Mesh(new T.PlaneGeometry(1.25,1.25),new T.MeshBasicMaterial({map:new T.CanvasTexture(shadowCanvas),transparent:true,depthWrite:false,opacity:.72,side:T.DoubleSide}));
+  this.goldShadow.rotation.x=-Math.PI/2;this.goldShadow.position.y=.014;this.goldShadow.renderOrder=4;this.goldShadow.visible=false;
+  this.scene.add(this.goldShadow);this.goldActive=false;this.goldFlowClock=0;this.goldLastRender=0;
+  this.resize();
+  // Only a gold piece needs an idle glow refresh. No full-screen bloom pipeline.
+  this.goldLoop=t=>{if(this.goldFlowClock!==-1){requestAnimationFrame(this.goldLoop);if(this.meshes[6]?.length&&!document.hidden&&t-this.goldLastRender>(this.goldActive?38:92)){this.goldLastRender=t;this.render()}}};
+  requestAnimationFrame(this.goldLoop);
   this.ro=window.ResizeObserver?new ResizeObserver(()=>this.resize()):null;this.ro?.observe(host);
   this.resizeListener=()=>this.resize();window.addEventListener('resize',this.resizeListener);
   this.renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();this.lost=true});
@@ -1084,8 +1144,48 @@ class ChocoDish {
   this.renderer.setSize(w,h,false);const half=Math.max(2.72,2.72/aspect);this.camera.left=-half*aspect;this.camera.right=half*aspect;this.camera.top=half;this.camera.bottom=-half;this.camera.updateProjectionMatrix();this.render();}
  point(i){const cell=SLOTS[i];return new T.Vector3(cell.x,.20,cell.z)}
  project(i){const p=this.point(i).project(this.camera),r=this.host.getBoundingClientRect();return {x:(p.x+1)*.5*r.width,y:(1-p.y)*.5*r.height};}
- update(tray){if(this.focusKey)this.clearHighlight();const target=bestLayout(tray,this.previous);const animations=[];const now=performance.now();
-  for(let lv=1;lv<=5;lv++){
+ attachGoldFlow(mesh){
+  const points=[];const a=.714/2,r=.108,corner=[[a-r,a-r],[-a+r,a-r],[-a+r,-a+r],[a-r,-a+r]];
+  for(let k=0;k<4;k++)for(let j=0;j<=8;j++){
+   const angle=(k*90+j*90/8)*Math.PI/180;
+   points.push(new T.Vector3(corner[k][0]+Math.cos(angle)*r,.478,corner[k][1]+Math.sin(angle)*r));
+  }
+  const path=new T.BufferGeometry().setFromPoints(points);
+  const base=new T.LineLoop(path,new T.LineBasicMaterial({color:0xfde5a0,transparent:true,opacity:.26,depthWrite:false,depthTest:true}));
+  base.renderOrder=11;base.raycast=()=>{};mesh.add(base);
+  const beadGeo=new T.SphereGeometry(.022,7,5),beads=[];
+  for(let i=0;i<7;i++){
+   const bead=new T.Mesh(beadGeo,new T.MeshBasicMaterial({color:i<2?0xfffbe6:0xffd174,transparent:true,opacity:0,depthWrite:false,depthTest:true}));
+   bead.renderOrder=12+i;bead.raycast=()=>{};mesh.add(bead);beads.push(bead);
+  }
+  mesh.userData.flow={points,base,beads};
+ }
+ setGoldSelected(value){this.goldActive=!!value;this.render()}
+ goldSelectPulse(){const m=this.meshes[6]?.[0];if(!m)return;
+  const start=performance.now(),base=.89;
+  const frame=now=>{if(!this.meshes[6]?.includes(m))return;
+   const t=Math.min(1,(now-start)/240);m.scale.setScalar(base*(1+.105*Math.sin(Math.PI*t)));
+   this.render();if(t<1)requestAnimationFrame(frame);else m.scale.setScalar(base);
+  };requestAnimationFrame(frame);
+ }
+ updateGoldFlow(){
+  const g=this.meshes[6]?.[0],flow=g?.userData.flow;
+  this.goldShadow.visible=!!g;
+  if(!g||!flow)return;
+  this.goldShadow.position.x=g.position.x;this.goldShadow.position.z=g.position.z;
+  const active=!!this.goldActive;
+  flow.base.material.opacity=active?.58:.19;
+  const points=flow.points,n=points.length,clock=performance.now()/(active?1160:2600);
+  flow.beads.forEach((bead,i)=>{
+   const u=((clock-i*.027)%1+1)%1*n,j=Math.floor(u),f=u-j;
+   bead.position.copy(points[j]).lerp(points[(j+1)%n],f);
+   bead.material.opacity=(active?.95:.22)*Math.pow(1-i/flow.beads.length,1.45);
+   bead.scale.setScalar(active?1.1:0.70);
+  });
+ }
+ goldScreenPoint(){const pt=this.locations[6]?.[0];if(!pt)return null;const r=this.host.getBoundingClientRect();return {x:r.left+pt.x,y:r.top+pt.y};}
+ update(tray,joker=0){if(this.focusKey)this.clearHighlight();this.joker=+!!joker;const target=bestLayout(tray,this.previous,this.joker);const animations=[];const now=performance.now();
+  for(let lv=1;lv<=6;lv++){
    const wanted=target[lv]||[],list=this.meshes[lv]||(this.meshes[lv]=[]),old=this.previous[lv]||[];
    // Assign existing objects to nearest target anchors to avoid gratuitous reordering.
    const available=[...wanted],assigned=[];
@@ -1095,16 +1195,16 @@ class ChocoDish {
     assigned.push(available.splice(idx,1)[0]);
    }
    while(list.length>wanted.length){const mesh=list.pop();this.scene.remove(mesh);}
-   for(const slot of available){const mesh=new T.Mesh(this.tower.geometry,this.tower.materials[lv]);mesh.scale.setScalar(.89);mesh.castShadow=true;mesh.receiveShadow=true;const halo=new T.Mesh(this.tower.geometry,new T.MeshBasicMaterial({color:0xf2c990,side:T.BackSide,transparent:true,opacity:.17,depthWrite:false}));halo.scale.setScalar(1.085);halo.visible=false;halo.castShadow=false;mesh.add(halo);mesh.userData.halo=halo;this.scene.add(mesh);mesh.position.copy(this.point(slot));mesh.position.y=1.12;mesh.userData.cell=slot;list.push(mesh);assigned.push(slot);}
+   for(const slot of available){const mesh=new T.Mesh(this.tower.geometry,lv===6?this.tower.goldMaterials:this.tower.materials[lv]);mesh.scale.setScalar(.89);mesh.castShadow=lv!==6;mesh.receiveShadow=lv!==6;if(lv===6)this.attachGoldFlow(mesh);const halo=new T.Mesh(this.tower.geometry,new T.MeshBasicMaterial({color:0xf2c990,side:T.BackSide,transparent:true,opacity:.17,depthWrite:false}));halo.scale.setScalar(1.085);halo.visible=false;halo.castShadow=false;mesh.add(halo);mesh.userData.halo=halo;this.scene.add(mesh);mesh.position.copy(this.point(slot));mesh.position.y=1.12;mesh.userData.cell=slot;list.push(mesh);assigned.push(slot);}
    for(let j=0;j<list.length;j++){
     const m=list[j],slot=assigned[j],to=this.point(slot),from=m.position.clone();m.userData.cell=slot;
-    const glow=(tray[lv]>=2 && (lv<5||tray[lv]>=3));
+    const glow=lv===6?!!this.joker:((tray[lv]>=2 && (lv<5||tray[lv]>=3)));
     m.userData.ready=glow;if(m.userData.halo){m.userData.halo.visible=glow;m.userData.halo.material.opacity=tray[lv]>=3?.21:.11;}
     if(from.distanceTo(to)>.005)animations.push({mesh:m,from,to});else m.position.copy(to);
    }
   }
-  this.previous={};for(let lv=1;lv<=5;lv++)this.previous[lv]=(this.meshes[lv]||[]).map(m=>m.userData.cell);
-  this.locations={};for(let lv=1;lv<=5;lv++)this.locations[lv]=(this.meshes[lv]||[]).map(m=>this.project(m.userData.cell));
+  this.previous={};for(let lv=1;lv<=6;lv++)this.previous[lv]=(this.meshes[lv]||[]).map(m=>m.userData.cell);
+  this.locations={};for(let lv=1;lv<=6;lv++)this.locations[lv]=(this.meshes[lv]||[]).map(m=>this.project(m.userData.cell));
   if(animations.length){const start=now,run=t=>{const p=Math.min(1,(t-start)/320),ease=1-Math.pow(1-p,3);
    for(const a of animations){a.mesh.position.lerpVectors(a.from,a.to,ease);a.mesh.position.y+=Math.sin(p*Math.PI)*.105;}
    this.render();if(p<1)this.frame=requestAnimationFrame(run);else this.frame=null;
@@ -1121,25 +1221,32 @@ class ChocoDish {
   const T=window.THREE, starts=selected.map(m=>m.position.clone());
   const center=new T.Vector3();starts.forEach(p=>center.add(p));center.multiplyScalar(1/take);center.y=.30;
   const isMerge=kind==='merge',target= isMerge ? (()=>{
-   const layout=bestLayout(after,this.previous),wanted=layout[lv+1]||[],used=this.previous[lv+1]||[];
+   const layout=bestLayout(after,this.previous,opts.jokerAfter??this.joker),wanted=layout[lv+1]||[],used=this.previous[lv+1]||[];
    const slot=wanted.find(x=>!used.includes(x))??wanted[wanted.length-1];return slot===undefined?center.clone():this.point(slot);
   })() : center;
   const born=isMerge?new T.Mesh(this.tower.geometry,this.tower.materials[lv+1]):null;
   if(born){born.castShadow=false;born.position.copy(center);born.position.y=.46;born.scale.setScalar(.001);this.scene.add(born)}
    const goldEffect=!!opts.jokerCreated||kind==='wild-clear';
-   const goldMat=goldEffect?new T.MeshPhysicalMaterial({color:0xecc47c,metalness:.26,roughness:.23,clearcoat:.55,emissive:0x7b4d0a,emissiveIntensity:.16}):null;
-   const gold=goldEffect?new T.Mesh(this.tower.geometry,goldMat):null;
-   if(gold){gold.castShadow=false;gold.position.copy(center);gold.position.y=.43;gold.scale.setScalar(.001);this.scene.add(gold)}
+   const goldenTarget=opts.jokerCreated?bestLayout(after,this.previous,opts.jokerAfter??1)[6]?.[0]:null;
+   const goldenAnchor=goldenTarget===undefined||goldenTarget===null?center.clone():this.point(goldenTarget);
+   const goldCurrent=kind==='wild-clear'?(this.meshes[6]?.[0]?.position.clone()||center.clone()):center.clone();
+   const gold=goldEffect?new T.Mesh(this.tower.geometry,this.tower.goldMaterials):null;
+   if(gold){gold.castShadow=false;gold.receiveShadow=false;gold.position.copy(goldCurrent);gold.position.y=.43;
+    gold.scale.setScalar(kind==='wild-clear'?.89:.001);this.scene.add(gold)}
+   const fusionRing=goldEffect?new T.Mesh(new T.TorusGeometry(.24,.015,6,48),new T.MeshBasicMaterial({color:0xffe29d,transparent:true,opacity:.68,depthWrite:false})):null;
+   if(fusionRing){fusionRing.rotation.x=-Math.PI/2;fusionRing.position.copy(center);fusionRing.position.y=.56;fusionRing.visible=false;this.scene.add(fusionRing)}
+   if(kind==='wild-clear'&&this.meshes[6]?.[0])this.meshes[6][0].visible=false;
   const crumbs=[];
-  if(!isMerge){const mat=new T.MeshBasicMaterial({color:new T.Color(this.tower.materials[lv][0]?.color || 0xe7b29d),transparent:true,opacity:.86,depthWrite:false});
+  if(!isMerge&&!goldEffect){const mat=new T.MeshBasicMaterial({color:new T.Color(this.tower.materials[lv][0]?.color || 0xe7b29d),transparent:true,opacity:.86,depthWrite:false});
    const geo=new T.TetrahedronGeometry(.076,0);
    for(let i=0;i<9;i++){const m=new T.Mesh(geo,mat);m.position.copy(center);m.userData.a=i*Math.PI*2/9;m.scale.setScalar(0);this.scene.add(m);crumbs.push(m)}
   }
-  const baseScale=.89, duration=kind==='merge'?410:goldEffect?410:290,begin=performance.now(),ease=t=>1-Math.pow(1-t,3),id=(this.motionEpoch=(this.motionEpoch||0)+1);
+  const baseScale=.89, duration=kind==='merge'?410:goldEffect?540:290,begin=performance.now(),ease=t=>1-Math.pow(1-t,3),id=(this.motionEpoch=(this.motionEpoch||0)+1);
   let complete=false;
   const finish=()=>{if(complete)return;complete=true;for(const m of selected){m.scale.setScalar(baseScale);}
-   if(born)this.scene.remove(born);if(gold){this.scene.remove(gold);goldMat.dispose();}for(const m of crumbs)this.scene.remove(m);
+   if(born)this.scene.remove(born);if(gold){this.scene.remove(gold);}if(kind==='wild-clear'&&this.meshes[6]?.[0])this.meshes[6][0].visible=true;for(const m of crumbs)this.scene.remove(m);
    if(crumbs.length){crumbs[0].geometry.dispose();crumbs[0].material.dispose()}
+   if(fusionRing){this.scene.remove(fusionRing);fusionRing.geometry.dispose();fusionRing.material.dispose()}
    this.render();done();};
   const frame=now=>{
    if(this.motionEpoch!==id){finish();return}
@@ -1150,9 +1257,13 @@ class ChocoDish {
    });
    if(born){const q=Math.max(0,(t-.39)/.61),b=ease(q);born.position.lerpVectors(center,target,b);born.position.y=.20 + .52*Math.sin(Math.PI*b)+ .09*(1-b);born.scale.setScalar(Math.max(.001,baseScale*(b<.6?b/.6*1.16:1.16-(b-.6)/.4*.16)))}
    if(gold){const q=Math.max(0,(t-(kind==='wild-clear'?.12:.38))/(kind==='wild-clear'?.65:.62)),b=ease(Math.min(1,q));
-    gold.position.set(center.x, .30+.46*Math.sin(Math.PI*b)+.12,center.z);
+    gold.position.lerpVectors(kind==='wild-clear'?goldCurrent:center,kind==='wild-clear'?center:goldenAnchor,b);
+    gold.position.y=.32+.47*Math.sin(Math.PI*b);
     gold.rotation.y=b*.34;
-    gold.scale.setScalar(baseScale*(kind==='wild-clear'?(1-b)*.94:1.06*b)*(1+.06*Math.sin(b*Math.PI)));}
+    gold.scale.setScalar(baseScale*(kind==='wild-clear'?(1-b):Math.min(1,1.10*b))*(1+.045*Math.sin(b*Math.PI)));}
+   if(fusionRing){const f=kind==='wild-clear'?Math.max(0,(t-.42)/.45):Math.max(0,(t-.43)/.42);
+    fusionRing.visible=f>0&&f<1;fusionRing.scale.setScalar(1+f*2.4);fusionRing.material.opacity=.62*Math.pow(1-f,1.65);
+   }
    for(const m of crumbs){const q=Math.max(0,(t-.47)/.53),ang=m.userData.a;
     m.position.set(center.x+Math.cos(ang)*(q*.59),center.y+.16+.35*q-.20*q*q,center.z+Math.sin(ang)*(q*.59));m.rotation.set(q*5,ang+q*3,q*3);m.scale.setScalar(.75*Math.sin(Math.PI*q));m.material.opacity=Math.max(.02,.86*(1-q));}
    this.render();if(t<1)requestAnimationFrame(frame);else finish();
@@ -1200,9 +1311,9 @@ class ChocoDish {
    lo.pop();hi.pop();out.push(lo.concat(hi));
   }return out;
  }
- levelAt(clientX,clientY){const r=this.host.getBoundingClientRect();let best=Infinity,target=null;for(let lv=1;lv<=5;lv++)for(const pt of this.locations[lv]||[]){const d=Math.hypot(clientX-r.left-pt.x,clientY-r.top-pt.y);if(d<best){best=d;target=lv}}return best<=32?target:null}
- render(){if(!this.lost)this.renderer.render(this.scene,this.camera)}
- dispose(){if(this.frame)cancelAnimationFrame(this.frame);this.ro?.disconnect();window.removeEventListener('resize',this.resizeListener);this.renderer.dispose()}
+ levelAt(clientX,clientY){const r=this.host.getBoundingClientRect();let best=Infinity,target=null;for(let lv=1;lv<=6;lv++)for(const pt of this.locations[lv]||[]){const d=Math.hypot(clientX-r.left-pt.x,clientY-r.top-pt.y);if(d<best){best=d;target=lv}}return best<=32?target:null}
+ render(){if(!this.lost){this.updateGoldFlow();this.renderer.render(this.scene,this.camera)}}
+ dispose(){this.goldFlowClock=-1;if(this.frame)cancelAnimationFrame(this.frame);this.ro?.disconnect();window.removeEventListener('resize',this.resizeListener);this.renderer.dispose()}
 }
 window.ChocoDish=ChocoDish;
 })();
@@ -1229,29 +1340,39 @@ const teach=(stage,levels,target,incoming)=>({size:stage+2,target,incoming,
 const TUTORIAL_LEVEL={id:'tutorial',cap:5,layers:[
  teach(0,[1,2,2,1],null,null),
  teach(1,[1,2,3,1,1,2,3,1,3],2,null),
- teach(2,[1,2,2,4,2,1,3,2,4,1,2,3,1,4,1,2],null,2)
+ teach(2,[5,2,1,4,5,3,2,1,4,5,2,3,2,1,3,4],null,2)
 ]};
 window.CHOCOLATE_LEVELS.push(TUTORIAL_LEVEL);
 const engine=new window.ChocolateEngine(window.CHOCOLATE_LEVELS);
 const sound=new window.ChocoSound();
+ document.addEventListener('pointerdown',()=>{if(!sound.muted)sound.unlock()},{capture:true,passive:true});
 const haptics=new window.ChocoHaptics();
-let scene=null,dish=null,busy=false,locked=false,toastTimer=null,activeToast=0,completed=0,ignoreNext=null,lastDangerState="",jokerMode=false,awards={};
+let scene=null,dish=null,busy=false,locked=false,toastTimer=null,activeToast=0,completed=0,ignoreNext=null,lastDangerState="",awards={};
 const max=5;
-const GOLD_CREATION_KEY='1chocolate-gold-created-taught-v02106';
-const GOLD_USE_KEY='1chocolate-gold-use-taught-v02106';
+// Presentation names only; game logic continues to use numeric levels.
+const COLOR_NAMES=['','粉色','黄色','绿色','橙色','深棕色'];
+const GOLD_CREATION_KEY='gold-created';
+const GOLD_USE_KEY='gold-use';
 const visual=window.ChocoVisual;
 let goldCoachPending=null,goldHintTimer=null;
-function seenGold(key){try{return localStorage.getItem(key)==='1'}catch{return false}}
-function markGold(key){try{localStorage.setItem(key,'1')}catch{}}
+function seenGold(key){return window.ChocoSave.read(key)==='1'}
+function markGold(key){window.ChocoSave.write(key,'1')}
 function hideGoldHint(){clearTimeout(goldHintTimer);document.getElementById('goldUseHint')?.setAttribute('hidden','')}
-function goldCoachDismiss(){const panel=document.getElementById('goldCoach');panel.hidden=true;markGold(GOLD_CREATION_KEY);const cb=goldCoachPending;goldCoachPending=null;cb?.()}
+function goldCoachDismiss(){const panel=document.getElementById('goldCoach');panel.hidden=true;dish?.highlightLevels([]);markGold(GOLD_CREATION_KEY);const cb=goldCoachPending;goldCoachPending=null;cb?.()}
+function goldCoachFocus(){const root=document.getElementById('app').getBoundingClientRect(),p=document.getElementById('goldBlurPath');if(!p||!dish)return;
+ const q=n=>Number(n).toFixed(1),hulls=dish.projectedHulls(6);
+ const goldPanel=document.getElementById('goldCoach');if(goldPanel){const trayTop=dish.host.getBoundingClientRect().top;goldPanel.style.paddingBottom=Math.max(12,root.bottom-trayTop+18)+'px';}
+ const holes=hulls.filter(a=>a.length>=3).map(h=>'M '+h.map(([x,y])=>q(x-root.left)+' '+q(y-root.top)).join(' L ')+' Z ').join(' ');
+ p.setAttribute('d',`M 0 0 H ${q(root.width)} V ${q(root.height)} H 0 Z ${holes}`);
+}
 function showGoldCoach(onContinue){if(seenGold(GOLD_CREATION_KEY)||isTeaching())return false;
  goldCoachPending=onContinue;
  document.getElementById('goldCoach').hidden=false;
+ dish?.highlightLevels([6]);goldCoachFocus();requestAnimationFrame(goldCoachFocus);setTimeout(goldCoachFocus,190);
  return true;
 }
-function showGoldUseHint(){if(seenGold(GOLD_USE_KEY)||isTeaching())return;
- const hint=document.getElementById('goldUseHint');hint.textContent='选择盘里两块同色巧克力，使用万能消除。\n再点金色，可取消。';hint.hidden=false;
+function showGoldUseHint(){if(isTeaching())return;
+ const hint=document.getElementById('goldUseHint');hint.textContent='恰好两块同色时，按住这组向右滑，消耗金色并消除。';hint.hidden=false;
  clearTimeout(goldHintTimer);goldHintTimer=setTimeout(()=>{hint.hidden=true},5200);
 }
 function goldFlight(from,to,ms=300){if(!from||!to)return;const root=document.getElementById('flyingLayer');
@@ -1264,15 +1385,15 @@ function goldFlight(from,to,ms=300){if(!from||!to)return;const root=document.get
 function centerOfElement(id){const r=document.getElementById(id).getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}}
 
 const tutorial={active:false,phase:'',step:0,silent:false,pending:false,epoch:0};
-let gameStarted=false,runRestored=false;const RUN_KEY='choco-run-v02103';
+let gameStarted=false,runRestored=false,tutorialGoldReward=false,coverActive=false;const RUN_KEY='run';
 // The learning curriculum is versioned independently of saved game state.
 // Never interpret the legacy `choco-tutorial-seen` flag as a 0.2.10.4 completion.
-const TUTORIAL_STATUS_KEY='1chocolate-onboarding-v02104';
+const TUTORIAL_STATUS_KEY='onboarding';
 const TUTORIAL_STATES=new Set(['in_progress','completed','skipped']);
-function tutorialStatus(){try{const value=localStorage.getItem(TUTORIAL_STATUS_KEY);return TUTORIAL_STATES.has(value)?value:null}catch{return null}}
-function setTutorialStatus(value){try{localStorage.setItem(TUTORIAL_STATUS_KEY,value)}catch{}}
+function tutorialStatus(){const value=window.ChocoSave.read(TUTORIAL_STATUS_KEY);return TUTORIAL_STATES.has(value)?value:null}
+function setTutorialStatus(value){if(TUTORIAL_STATES.has(value))window.ChocoSave.write(TUTORIAL_STATUS_KEY,value)}
 function tutorialAcknowledged(){return ['completed','skipped'].includes(tutorialStatus())}
-function leaveTutorialForGame(){tutorial.epoch++;tutorial.pending=false;tutorial.active=false;window.CHOCOLATE_TUTORIAL_CLICK_ONLY=false;hideTeacher();
+function leaveTutorialForGame(){tutorial.epoch++;tutorial.pending=false;tutorial.active=false;hideTeacher();
  // A replay must not destroy an existing formal-game save. New players start at game 1.
  if(!restoreRun())startGame(0);
  else {hideNavigation();hideDialog();}
@@ -1293,42 +1414,77 @@ const TUTORIAL_SECOND=[
  {kind:'pick',id:'teach2_4',text:'凑齐三块。'},
  {kind:'merge',lv:1,gesture:'hold',text:'按住这组。'}
 ];
+const TUTORIAL_THIRD=[
+ {kind:'pick',id:'teach3_0',text:'收下一块深棕色。'},
+ {kind:'pick',id:'teach3_4',text:'再来一块。'},
+ {kind:'pick',id:'teach3_9',text:'凑齐三块。'},
+ {kind:'clear',lv:5,text:'点击，获得金色。'},
+ {kind:'pick',id:'teach3_1',text:'再收一块黄色。'},
+ {kind:'wild-clear',lv:2,gesture:'hold',text:'按住这两块，向右消除。'}
+];
+
 function isTeaching(){return tutorial.active&&engine.state.game===TUTORIAL_INDEX}
 function strictTeaching(){return isTeaching()&&tutorial.phase==='steps'}
-function lessonStep(){return engine.state.stage===0?TUTORIAL_STEPS[tutorial.step]:TUTORIAL_SECOND[tutorial.step]}
+function lessonStep(){return (engine.state.stage===0?TUTORIAL_STEPS:engine.state.stage===1?TUTORIAL_SECOND:TUTORIAL_THIRD)[tutorial.step]}
 function teacherAccept(kind,val,source='tap'){if(isTeaching()&&(tutorial.pending||tutorial.phase.startsWith('welcome-')||tutorial.phase==='notice'||tutorial.phase==='capacity-notice'||tutorial.phase==='transition'))return false;if(!strictTeaching())return true;const a=lessonStep();return !!a&&a.kind===kind&&(kind==='pick'?a.id===val:a.lv===val)&&(!a.gesture||source===a.gesture)}
-function finishTutorial(){tutorial.epoch++;tutorial.pending=false;tutorial.active=false;window.CHOCOLATE_TUTORIAL_CLICK_ONLY=false;hideTeacher();setTutorialStatus('completed');showDialog('tutorial-win')}
+function finishTutorial(achievement=false){tutorialGoldReward=!!achievement;tutorial.epoch++;tutorial.pending=false;tutorial.active=false;hideTeacher();setTutorialStatus('completed');showDialog('tutorial-win')}
 function hideTeacher(){dish?.highlightLevel(null);scene?.highlightTile(null);$('teachSpot').hidden=true;$('teachCard').hidden=true;$('teachSkip').hidden=true;}
-function tutorialHold(kind,value,duration,done,source='tap'){
- if(!strictTeaching()){done();return}
- tutorial.pending=true;dish?.highlightLevel(null);scene.highlightTile(null);$('teachSpot').hidden=true;$('teachCard').hidden=true;
+// The blur and focus must exit BEFORE the first game animation frame.
+// Keep tutorial input locked until animations finish, then reveal the next cue.
+function tutorialActionBegin(){
+ if(!strictTeaching())return;
+ tutorial.pending=true;
+ $('teachSpot').hidden=true;$('teachCard').hidden=true;
+ scene?.highlightTile(null);dish?.highlightLevel(null);
+}
+function tutorialActionEnd(kind,value,delay,done,source='tap'){
+ if(!isTeaching()||tutorial.phase!=='steps'){done();return;}
  const epoch=tutorial.epoch;
- setTimeout(()=>{if(!isTeaching()||epoch!==tutorial.epoch)return;tutorial.pending=false;advanceTeacher(kind,value,source);done()},duration);
+ setTimeout(()=>{
+  if(epoch!==tutorial.epoch||!isTeaching())return;
+  tutorial.pending=false;
+  advanceTeacher(kind,value,source);
+  done();
+ },delay);
 }
 function skipTutorial(){if(tutorialStatus()!=='completed')setTutorialStatus('skipped');leaveTutorialForGame()}
-function beginTutorial(){hideNavigation();gameStarted=false;if(!tutorialAcknowledged())setTutorialStatus('in_progress');tutorial.epoch++;tutorial.pending=false;jokerMode=false;lastDangerState='';busy=false;locked=false;engine.startGame(TUTORIAL_INDEX);scene.setGame(engine.currentGame());tutorial.active=true;window.CHOCOLATE_TUTORIAL_CLICK_ONLY=true;tutorial.phase='welcome-1';tutorial.message='欢迎来到《以巧克力》。';tutorial.target='welcome';tutorial.step=0;tutorial.silent=false;renderGame();hideDialog();updateTeacher()}
+function beginTutorial(){hideNavigation();gameStarted=false;tutorialGoldReward=false;if(!tutorialAcknowledged())setTutorialStatus('in_progress');tutorial.epoch++;tutorial.pending=false;lastDangerState='';busy=false;locked=false;engine.startGame(TUTORIAL_INDEX);scene.setGame(engine.currentGame());tutorial.active=true;tutorial.phase='welcome-1';tutorial.message='欢迎来到《以巧克力》。';tutorial.target='welcome';tutorial.step=0;tutorial.silent=false;renderGame();hideDialog();updateTeacher()}
 function teachMessage(text,target='goal',phase='notice'){
  tutorial.phase=phase;tutorial.message=text;tutorial.target=target;tutorial.silent=false;updateTeacher();
 }
 function advanceTeacher(kind,value,source='tap'){if(!strictTeaching()||!teacherAccept(kind,value,source))return;
- tutorial.step++;tutorial.silent=false;if(engine.state.stage===1){window.CHOCOLATE_TUTORIAL_CLICK_ONLY=lessonStep()?.gesture!=='hold';}
- const steps=engine.state.stage===0?TUTORIAL_STEPS:TUTORIAL_SECOND;
- if(tutorial.step>=steps.length){if(engine.state.stage===1){tutorial.phase='free';window.CHOCOLATE_TUTORIAL_CLICK_ONLY=false;tutorial.silent=true;tutorial.message='本轮目标：留一块黄色。';tutorial.target='goal';}else{tutorial.phase='transition';tutorial.message='这一层清空了。';tutorial.target='goal';}}
+ tutorial.step++;tutorial.silent=false;
+ const steps=engine.state.stage===0?TUTORIAL_STEPS:engine.state.stage===1?TUTORIAL_SECOND:TUTORIAL_THIRD;
+ if(engine.state.stage===2&&kind==='clear'&&value===5&&tutorial.step===4){
+  tutorial.phase='notice';tutorial.message='三块深棕巧克力，合成一块金色。\n金色不占容量。';tutorial.target='gold';tutorial.silent=false;
+ }else if(engine.state.stage===2&&kind==='wild-clear'&&tutorial.step===steps.length){
+  // The tutorial grants a new joker after the player actually consumes the first.
+  // This is a tutorial-only gift: no normal game rule or official stage is changed.
+  if(engine.state.joker===0){engine.state.joker=1;engine.history=[];dish?.update(engine.state.tray,1);sound.play('gold-gift');haptic(14);dish?.flash(6);}
+  tutorial.phase='notice';tutorial.message='再送你一块金色。\n留到通关，还有额外奖励。';tutorial.target='gold';tutorial.silent=false;
+ }else if(tutorial.step>=steps.length){
+  if(engine.state.stage===1){tutorial.phase='free';tutorial.silent=true;tutorial.message='本轮目标：留一块黄色。';tutorial.target='goal';}
+  else {tutorial.phase='transition';tutorial.message='这一层清空了。';}
+ }
  // The first pickup teaches capacity by showing its actual change after the tile lands.
  // This is a real observation/continue step, NOT a toast laid over an interactive board.
  if(engine.state.stage===0&&kind==='pick'&&tutorial.step===1){tutorial.phase='capacity-notice';tutorial.message='亮几格，就装了几块。\n两块同色，合成右边的下一种颜色。';tutorial.target='capacity';tutorial.silent=false;}
  updateTeacher();
 }
 function onTutorialLayerChange(){if(!isTeaching())return;
- if(engine.state.stage===1){window.CHOCOLATE_TUTORIAL_CLICK_ONLY=true;tutorial.step=0;teachMessage('本轮目标：留一块黄色。','goal','notice');}
- else if(engine.state.stage===2){teachMessage('这层清空。','goal','notice');}
+ if(engine.state.stage===1){tutorial.step=0;teachMessage('本轮目标：留一块黄色。','goal','notice');}
+ else if(engine.state.stage===2){tutorial.step=0;teachMessage('这层清空。\n先认识金色巧克力。','goal','notice');}
 }
 function teacherNext(){if(!isTeaching()||!['notice','capacity-notice','welcome-1','welcome-2'].includes(tutorial.phase))return;
  if(tutorial.phase==='welcome-1'){tutorial.phase='welcome-2';tutorial.message='先从一块巧克力开始。';tutorial.silent=false;updateTeacher();return;}
  if(tutorial.phase==='welcome-2'){tutorial.phase='steps';tutorial.silent=false;updateTeacher();return;}
  if(tutorial.phase==='capacity-notice'){tutorial.phase='steps';tutorial.silent=false;updateTeacher();return;}
  if(engine.state.stage===1){tutorial.phase='steps';tutorial.step=0;tutorial.silent=false;updateTeacher();}
- else {tutorial.phase='free';tutorial.silent=true;tutorial.message='这层清空。';tutorial.target='goal';updateTeacher()}
+ else if(engine.state.stage===2){
+  if(tutorial.step>=TUTORIAL_THIRD.length){tutorial.phase='free';tutorial.silent=true;tutorial.message='这层清空。';tutorial.target='goal';}
+  else tutorial.phase='steps';
+  updateTeacher();
+ }else {tutorial.phase='free';tutorial.silent=true;tutorial.message='这层清空。';tutorial.target='goal';updateTeacher()}
 }
 function teacherTarget(){if(!isTeaching())return null;
  if(tutorial.phase==='steps'){const a=lessonStep();if(!a)return null;
@@ -1338,6 +1494,7 @@ function teacherTarget(){if(!isTeaching())return null;
   }
   const els=[...document.querySelectorAll(`.color-column[data-lv="${a.lv}"]`)];if(!els.length)return null;const rs=els.map(e=>e.getBoundingClientRect());const x=Math.min(...rs.map(r=>r.left)),y=Math.min(...rs.map(r=>r.top)),right=Math.max(...rs.map(r=>r.right)),bottom=Math.max(...rs.map(r=>r.bottom));return {kind:'dish-group',lv:a.lv,x,y,w:right-x,h:bottom-y};
  }
+ if(tutorial.phase==='notice'&&tutorial.target==='gold'){const e=document.querySelector('.color-column[data-lv="6"]');if(e){const r=e.getBoundingClientRect();return {kind:'dish-group',lv:6,x:r.left,y:r.top,w:r.width,h:r.height}}}
  if(tutorial.phase==='capacity-notice'){const r=$('capacity').getBoundingClientRect();return {kind:'capacity',x:r.x,y:r.y,w:r.width,h:r.height};}
  if(tutorial.phase==='notice')return $('goal')?.getBoundingClientRect();
  return null;
@@ -1473,7 +1630,7 @@ function fly(from,lv){if(!from)return;const target=colCenter(lv);if(!target)retu
 }
 function haptic(t=8){return haptics.feedback(t)}
 function goalRender(){const t=goal();$('goal').innerHTML=t?`<span class="mini-choco">${visual.piece(t)}</span>`:'<span class="goal-plate"></span>';
- $('goal').setAttribute('aria-label',t?`当前层目标：全部取完后，槽内只留下一个等级 ${t} 的巧克力`:'当前层目标：全部取完并清空槽位');}
+ $('goal').setAttribute('aria-label',t?`当前层目标：取完棋盘后，槽里只留一块${COLOR_NAMES[t]}巧克力`:'当前层目标：全部取完并清空槽位');}
 function countAll(){return engine.total()}
 function updateGestureBlur(lv){const r=$('app').getBoundingClientRect(),round=n=>Number(n).toFixed(2);
  const holes=dish?.projectedHulls(lv)||[];let d=`M 0 0 H ${round(r.width)} V ${round(r.height)} H 0 Z `;
@@ -1481,21 +1638,37 @@ function updateGestureBlur(lv){const r=$('app').getBoundingClientRect(),round=n=
  $('gestureBlurPath').setAttribute('d',d);
 }
 function menuDismiss(){const menu=$('gestureMenu');if(menu)menu.hidden=true;$('gestureFocus').hidden=true;if(!isTeaching())dish?.highlightLevel(null);}
-function menuPreview(direction){const menu=$('gestureMenu');if(!menu)return;menu.querySelectorAll('.choice').forEach(c=>c.classList.toggle('active',c.dataset.choice===direction));}
+// Left always means upgrading two. Right always means clearing (3 ordinary,
+// or exactly 2 when one gold joker is available).
+function gestureAction(lv,direction){
+ if(direction==='left')return engine.can('merge',lv)?'merge':null;
+ if(direction==='right')return engine.can('clear',lv)?'clear':engine.can('wild-clear',lv)?'wild-clear':null;
+ return null;
+}
+function menuPreview(direction){const menu=$('gestureMenu');if(!menu)return;
+ menu.querySelectorAll('.choice').forEach(c=>c.classList.toggle('active',c.dataset.choice===direction&&!c.classList.contains('is-disabled')));
+}
 function menuShow(lv,button){const menu=$('gestureMenu'),r=button.getBoundingClientRect(),app=$('app').getBoundingClientRect();
  menu.style.left=`${Math.max(116,Math.min(app.width-116,r.left-app.left+r.width/2))}px`;
  menu.style.top=`${Math.max(92,r.top-app.top-94)}px`;
+ for(const dir of ['left','right']){
+  const choice=menu.querySelector(`[data-choice="${dir}"]`),available=!!gestureAction(lv,dir);
+  choice.classList.toggle('is-disabled',!available);choice.setAttribute('aria-disabled',String(!available));
+ }
  menu.hidden=false;menuPreview('');$('gestureFocus').hidden=false;dish?.highlightLevel(lv);updateGestureBlur(lv);
- if(strictTeaching()&&lessonStep()?.gesture==='hold'){$('teachSpot').hidden=true;$('teachText').textContent='向左合成。';}
+ if(strictTeaching()&&lessonStep()?.gesture==='hold'){$('teachSpot').hidden=true;$('teachText').textContent=lessonStep()?.kind==='wild-clear'?'向右消除。':'向左合成。';}
  haptic(8);
 }
+function onGesture(lv,direction){const action=gestureAction(lv,direction);
+ if(!action||!teacherAccept(action,lv,'hold')){if(strictTeaching())updateTeacher();return;}
+ doAction(action,lv,'hold');}
 function bindDishSurface(){const surface=$('dishHitLayer');let touch=null,timer=null;
  const cancel=()=>{if(timer){clearTimeout(timer);timer=null}touch=null;menuDismiss()};
  surface.addEventListener('contextmenu',e=>e.preventDefault());
  surface.addEventListener('pointerdown',e=>{
   if(!canInput()||touch)return;const lv=dish.levelAt(e.clientX,e.clientY);if(!lv)return;
   e.preventDefault();touch={lv,id:e.pointerId,x:e.clientX,y:e.clientY,holding:false,direction:''};surface.setPointerCapture?.(e.pointerId);
-  if(engine.state.tray[lv]>=3&&lv<5&&(!strictTeaching()||(lessonStep()?.gesture==='hold'&&lessonStep()?.lv===lv))&&!jokerMode){
+  if(lv<=5&&engine.state.tray[lv]>0){
    timer=setTimeout(()=>{timer=null;if(!touch||!canInput())return;touch.holding=true;
      menuShow(lv,{getBoundingClientRect:()=>({left:touch.x-22,top:touch.y-22,width:44,height:44})});},285);
   }
@@ -1508,27 +1681,33 @@ function bindDishSurface(){const surface=$('dishHitLayer');let touch=null,timer=
  });
  surface.addEventListener('pointerup',e=>{if(!touch||touch.id!==e.pointerId)return;e.preventDefault();
   const t=touch,dx=e.clientX-t.x,dy=e.clientY-t.y;cancel();
-  if(t.holding){if(t.direction==='left')onColumn(t.lv,true,false);else if(t.direction==='right')onColumn(t.lv,false,false);else if(strictTeaching())updateTeacher();return;}
-  if(Math.hypot(dx,dy)<14)onColumn(t.lv,false,false);
+  if(t.holding){if(t.direction)onGesture(t.lv,t.direction);else if(strictTeaching())updateTeacher();return;}
+  if(Math.hypot(dx,dy)<14){if(t.lv===6)showGoldUseHint();else onColumn(t.lv,false,false);}
  });
  surface.addEventListener('pointercancel',cancel);
  surface.addEventListener('lostpointercapture',()=>{if(touch)cancel()});
 }
-function bindDishButton(col,lv){col.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onColumn(lv,false,false)}else if(e.key==='ArrowLeft'){e.preventDefault();onColumn(lv,true,false)}else if(e.key==='ArrowRight'){e.preventDefault();onColumn(lv,false,false)}});}
-function renderTray(){if(!jokerMode)hideGoldHint();const tray=engine.state.tray;const host=$('dishHitLayer');
+function bindDishButton(col,lv){col.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onColumn(lv,false,false)}else if(e.key==='ArrowLeft'){e.preventDefault();onGesture(lv,'left')}else if(e.key==='ArrowRight'){e.preventDefault();onGesture(lv,'right')}});}
+function renderTray(){const tray=engine.state.tray;const host=$('dishHitLayer');
  if(!dish)return;
- dish.update(tray);
- if(jokerMode&&engine.state.joker)dish.highlightLevels([1,2,3,4,5].filter(lv=>tray[lv]>=2));
+ dish.update(tray,engine.state.joker);
+ dish.setGoldSelected(false);
  host.replaceChildren();
  for(let lv=1;lv<=max;lv++){
   const n=tray[lv];for(const xy of dish.locations[lv]||[]){
-   const col=document.createElement('button');col.type='button';col.className='color-column'+(n>=3||(n>=2&&lv<max)?' can-act':'')+(jokerMode&&engine.state.joker&&n>=2?' joker-target':'');col.dataset.lv=lv;
+   const col=document.createElement('button');col.type='button';col.className='color-column'+(n>=3||(n>=2&&lv<max)?' can-act':'');col.dataset.lv=lv;
    col.style.left=`${xy.x}px`;col.style.top=`${xy.y}px`;
-   col.setAttribute('aria-label',`${lv}级巧克力，当前${n}块。${n>=3?(lv===5?'点击结算三块':'点击消除三块；长按左右选择'):n===2&&lv<5?'点击合成两块':'等待更多巧克力'}`);
+   col.setAttribute('aria-label',`${COLOR_NAMES[lv]}巧克力，当前${n}块。点击${n>=3?'消除三块':n>=2&&lv<max?'合成两块':'暂不可操作'}；长按向左合成或向右消除，灰显选项不可用。`);
    col.innerHTML='<span class="stack-zone"></span>';
    bindDishButton(col,lv);host.appendChild(col);
   }
  }
+ if(engine.state.joker){for(const xy of dish.locations[6]||[]){
+  const gold=document.createElement('button');gold.type='button';gold.className='color-column gold-piece-hit';gold.dataset.lv='6';gold.style.left=`${xy.x}px`;gold.style.top=`${xy.y}px`;
+  gold.setAttribute('aria-label','金色巧克力：长按盘中恰好两块同色巧克力并向右滑，可消耗金色直接消除');
+  gold.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGoldUseHint()}});
+  host.appendChild(gold);
+ }}
  const n=countAll(),cap=engine.currentGame().cap,rail=$('capacity');
  if(rail.children.length!==5){
   rail.replaceChildren(...['#E7A0AE','#E9CD83','#A4C59C','#DAA47A','#896A5A'].map((c,i)=>{
@@ -1538,8 +1717,8 @@ function renderTray(){if(!jokerMode)hideGoldHint();const tray=engine.state.tray;
  [...rail.children].forEach((el,i)=>el.classList.toggle('on',i<n));
  rail.classList.toggle('full',n>=cap);
  $('capacity').setAttribute('aria-label',`已占用 ${n} / ${cap} 块巧克力`);
- const joker=$('jokerSlot');joker.classList.toggle('filled',!!engine.state.joker);joker.classList.toggle('selected',jokerMode&&!!engine.state.joker);joker.disabled=!engine.state.joker;
- joker.setAttribute('aria-label',engine.state.joker?'万能巧克力：点此选择，再点击盘中有两块同级的巧克力进行消除':'万能巧克力槽：空');
+ const joker=$('jokerSlot');joker.classList.toggle('filled',!!engine.state.joker);joker.classList.remove('selected');joker.disabled=!engine.state.joker;
+ joker.setAttribute('aria-label',engine.state.joker?'金色巧克力已就绪：长按恰好两块同色巧克力并向右滑使用':'金色巧克力槽：空');
  joker.querySelector('.joker-body').innerHTML=engine.state.joker?'<span class="joker-chocolate">'+visual.piece('gold')+'</span>':'<span class="joker-empty">✧</span>';
  $('undoBtn').disabled=!engine.history.length||(isTeaching()&&tutorial.phase!=='free');
 }
@@ -1549,52 +1728,46 @@ function tutorialInputLocked(){return isTeaching()&&['notice','capacity-notice',
 function isOverlayOpen(){return !$('overlay').classList.contains('hidden')}
 function pick(id){if(!canInput())return;if(!teacherAccept('pick',id))return;const card=engine.getCard(id);if(!card)return;
  const from=scene.tileScreenPoint(id);const action=engine.apply('pick',id);if(!action){sound.play('bad');say('合成槽已满');return;}
- if(jokerMode){jokerMode=false;hideGoldHint();dish?.highlightLevels([])}
+ tutorialActionBegin();
  sound.unlock();sound.play('pick');scene.removeCard(id);renderGame(false);fly(from,card.lv);
  if(haptics.ios)haptic(7);else setTimeout(()=>haptic(7),isTeaching()?530:285);
- if(strictTeaching()){busy=true;tutorialHold('pick',id,770,()=>{busy=false;postAction(0)})}
+ if(strictTeaching()){busy=true;tutorialActionEnd('pick',id,770,()=>{busy=false;postAction(0)})}
  else postAction(260);
 }
 function onColumn(lv,chooseMerge,tooFar){if(!canInput()||tooFar)return;
  const n=engine.state.tray[lv];if(!n)return;
- if(jokerMode){if(n>=2){jokerMode=false;doAction('wild-clear',lv);return;}say('请选择至少有两块同级巧克力的组合');return;}
- if(chooseMerge){if(n>=3&&lv<max)doAction('merge',lv,'hold');return;}
+ if(chooseMerge){onGesture(lv,'left');return;}
  if(n>=3)doAction('clear',lv);
  else if(n>=2&&lv<max)doAction('merge',lv);
- else {sound.play('bad');say(lv===max?'再取一块最高级巧克力':'再取一块相同等级的巧克力')}
+ else {sound.play('bad');say(lv===max?'深棕巧克力凑齐三块，才能合成金色':'再取一块同色巧克力')}
 }
 function colCenter(lv){const els=[...document.querySelectorAll(`.color-column[data-lv="${lv}"]`)];if(!els.length)return null;
  const pts=els.map(el=>el.getBoundingClientRect());return {x:pts.reduce((a,r)=>a+r.left+r.width/2,0)/pts.length,y:pts.reduce((a,r)=>a+r.top+r.height/2,0)/pts.length};}
 function doAction(kind,lv,source='tap'){if(!canInput()||!engine.can(kind,lv)||!teacherAccept(kind,lv,source))return;
- const pt=colCenter(lv);const result=engine.apply(kind,lv);if(!result)return;
- jokerMode=false;hideGoldHint();$('jokerSlot').classList.remove('selected');if(kind==='wild-clear')markGold(GOLD_USE_KEY);busy=true;
+ const pt=colCenter(lv),wasGold=engine.state.joker;const result=engine.apply(kind,lv);if(!result)return;
+ hideGoldHint();if(kind==='wild-clear')markGold(GOLD_USE_KEY);busy=true;
+ tutorialActionBegin();
  if(kind==='merge'){
   // The merge rule is explained directly below the capacity rule in the same paused lesson.
   haptic(8);setTimeout(()=>sound.play('merge',lv),175);
   dish.animateResolve(kind,lv,engine.state.tray,()=>{
    renderGame();if(pt)pulse(pt.x,pt.y,lv+1,7);
-   if(strictTeaching())tutorialHold(kind,lv,410,()=>{busy=false;postAction(0)},source);
+   if(strictTeaching())tutorialActionEnd(kind,lv,150,()=>{busy=false;postAction(0)},source);
    else {busy=false;postAction(0)}
   });
  } else {
   haptic(8);
-  const goldFrom=centerOfElement('jokerSlot');
-  if(kind==='wild-clear')$('jokerSlot').classList.add('gold-spending');
-  if(kind==='wild-clear'&&pt){goldFlight(goldFrom,pt,260);}
-  setTimeout(()=>{sound.play(result.jokerCreated?'joker':kind==='wild-clear'?'wild':'clear',engine.state.chain);haptic(result.jokerCreated||kind==='wild-clear'?19:15)},kind==='wild-clear'?205:185);
+  const goldFrom=dish?.goldScreenPoint?.()||centerOfElement('jokerSlot');
+  if(kind==='wild-clear')dish?.highlightLevels([]);
+  // Gold participates as real 3D chocolate. No flying 2D joker surrogate.
+  setTimeout(()=>{sound.play(result.jokerCreated?'gold-birth':kind==='wild-clear'?'gold-release':'clear',engine.state.chain);haptic(result.jokerCreated||kind==='wild-clear'?19:15)},kind==='wild-clear'?205:185);
   dish.animateResolve(kind,lv,engine.state.tray,()=>{
-   renderGame();$('jokerSlot').classList.remove('gold-spending');if(pt)pulse(pt.x,pt.y,result.jokerCreated?5:lv,result.jokerCreated?15:kind==='wild-clear'?12:9);
-   if(result.jokerCreated){
-    $('jokerSlot').classList.add('gold-arriving');
-    if(pt)goldFlight(pt,centerOfElement('jokerSlot'),310);
-    setTimeout(()=>$('jokerSlot').classList.remove('gold-arriving'),310);
-    $('jokerSlot').classList.add('gold-fanfare');setTimeout(()=>$('jokerSlot').classList.remove('gold-fanfare'),700);
-   }
-   const proceed=()=>{if(strictTeaching())tutorialHold(kind,lv,440,()=>{busy=false;postAction(0)},source);
+   renderGame();if(pt)pulse(pt.x,pt.y,result.jokerCreated?5:lv,result.jokerCreated?15:kind==='wild-clear'?12:9);
+   if(result.jokerCreated){dish?.flash(6);dish?.highlightLevels([6]);}
+   const proceed=()=>{if(strictTeaching())tutorialActionEnd(kind,lv,190,()=>{busy=false;postAction(0)},source);
     else {busy=false;postAction(0)}};
-   if(result.jokerCreated&&showGoldCoach(proceed)){busy=false;return;}
    proceed();
-  },{jokerCreated:!!result.jokerCreated});
+  },{jokerCreated:!!result.jokerCreated,jokerBefore:wasGold,jokerAfter:engine.state.joker});
  }
 }
 function postAction(delay){if(delay){setTimeout(()=>postAction(0),delay);return}if(isOverlayOpen())return;
@@ -1602,7 +1775,7 @@ function postAction(delay){if(delay){setTimeout(()=>postAction(0),delay);return}
   busy=true;
   const result=engine.nextStage();
   $('boardPulse').classList.remove('active');void $('boardPulse').offsetWidth;$('boardPulse').classList.add('active');sound.play(result.kind==='game-complete'?'win':'reveal');
-  if(result.kind==='game-complete'){if(isTeaching()){gameStarted=false;setTimeout(()=>{busy=false;finishTutorial()},500);return;}try{localStorage.removeItem(RUN_KEY)}catch{};gameStarted=false;completed=Math.max(completed,engine.state.game+1);if(result.achievement)awards[engine.state.game]=1;try{localStorage.setItem('choco-progress',String(completed));localStorage.setItem('choco-awards-v02',JSON.stringify(awards))}catch{};setTimeout(()=>{busy=false;showDialog('win')},500);return}
+  if(result.kind==='game-complete'){if(isTeaching()){gameStarted=false;setTimeout(()=>{busy=false;finishTutorial(result.achievement)},500);return;}window.ChocoSave.remove(RUN_KEY);gameStarted=false;completed=Math.max(completed,engine.state.game+1);if(result.achievement)awards[engine.state.game]=1;window.ChocoSave.writeJSON('profile',{completed,awards});setTimeout(()=>{busy=false;showDialog('win')},500);return}
   renderGame();scene.setStage(engine.state.stage,{animate:true});if(isTeaching()){tutorial.pending=true;scene?.highlightTile(null);setTimeout(()=>{tutorial.pending=false;onTutorialLayerChange();busy=false;updateTeacher()},760)}else setTimeout(()=>{busy=false;updateTeacher();},450);
   return;
  }
@@ -1618,39 +1791,69 @@ function postAction(delay){if(delay){setTimeout(()=>postAction(0),delay);return}
  }
 }
 function undo(){if(busy||isOverlayOpen()||!engine.history.length||(isTeaching()&&tutorial.phase!=='free'))return;
- engine.undo();jokerMode=false;scene.tweens=[];scene.sync(engine.state);
+ engine.undo();scene.tweens=[];scene.sync(engine.state);
  for(const mesh of scene.tiles.values()){mesh.scale.setScalar(1);mesh.position.y=.075+(scene.game.layers.length-1-mesh.userData.layer)*.455}
  renderGame();sound.play('hint');}
-function resetLayer(){menuDismiss();dish?.highlightLevel(null);tutorial.epoch++;tutorial.pending=false;scene?.highlightTile(null);jokerMode=false;lastDangerState='';busy=false;locked=false;if(isTeaching()){tutorial.step=0;tutorial.silent=false;tutorial.phase=engine.state.stage===0?'steps':'notice';tutorial.message=engine.state.stage===1?'本轮目标：留一块黄色。':'这层清空。';tutorial.target='goal';}engine.resetStage();scene.tweens=[];scene.sync(engine.state);for(const mesh of scene.tiles.values()){mesh.scale.setScalar(1);mesh.position.y=.075+(scene.game.layers.length-1-mesh.userData.layer)*.455};renderGame();hideDialog();updateTeacher();}
-function startGame(index){hideNavigation();gameStarted=true;menuDismiss();dish?.highlightLevel(null);tutorial.epoch++;tutorial.pending=false;tutorial.active=false;window.CHOCOLATE_TUTORIAL_CLICK_ONLY=false;hideTeacher();jokerMode=false;lastDangerState='';busy=false;locked=false;engine.startGame(index);scene.setGame(engine.currentGame());renderGame();saveRun();hideDialog();}
+function resetLayer(){menuDismiss();dish?.highlightLevel(null);tutorial.epoch++;tutorial.pending=false;scene?.highlightTile(null);lastDangerState='';busy=false;locked=false;if(isTeaching()){tutorial.step=0;tutorial.silent=false;tutorial.phase=engine.state.stage===0?'steps':'notice';tutorial.message=engine.state.stage===1?'本轮目标：留一块黄色。':engine.state.stage===2?'这层清空。先认识金色巧克力。':'这层清空。';tutorial.target='goal';}engine.resetStage();scene.tweens=[];scene.sync(engine.state);for(const mesh of scene.tiles.values()){mesh.scale.setScalar(1);mesh.position.y=.075+(scene.game.layers.length-1-mesh.userData.layer)*.455};renderGame();hideDialog();updateTeacher();}
+function startGame(index){hideNavigation();gameStarted=true;menuDismiss();dish?.highlightLevel(null);tutorial.epoch++;tutorial.pending=false;tutorial.active=false;hideTeacher();lastDangerState='';busy=false;locked=false;engine.startGame(index);scene.setGame(engine.currentGame());renderGame();saveRun();hideDialog();}
 function findHint(){if(!canInput())return;if(strictTeaching()){updateTeacher();say('跟着亮起的位置点击',1000);return;}sound.unlock();say('寻找安全操作…',850);
  setTimeout(()=>{if(!canInput())return;const out=engine.solve();if(out.status==='dead'){say('这条路线已经无解，可以撤销一步',2000);return}if(out.status==='budget'){say('搜索较复杂，可尝试撤销或重开本层',2000);return}
   const a=out.action;if(!a){say('目标已达成');return}
   if(a.kind==='pick'){
    const card=engine.currentLayer().tiles.find(t=>engine.state.remaining.includes(t.id)&&t.lv===a.lv);if(card){const mesh=scene.tiles.get(card.id);scene.tween(700,t=>{mesh.scale.setScalar(1+.14*Math.sin(Math.PI*2*t));});say('试试这块巧克力')}
-  }else{dish?.flash(a.lv);say(a.kind==='wild-clear'?'试试用万能巧克力消除这两块':a.kind==='merge'?'试试点击盘中的两块同级巧克力':a.lv===max&&!engine.state.joker?'三块最高级可以制造万能巧克力':'试试点击盘中的三块同级巧克力',1600)}
+  }else{dish?.flash(a.lv);say(a.kind==='wild-clear'?'按住这两块同色巧克力向右滑，消耗金色':a.kind==='merge'?'试试点击盘中的两块同色巧克力':a.lv===max&&!engine.state.joker?'三块深棕巧克力，可以合成金色':'试试点击盘中的三块同色巧克力',1600)}
   sound.play('hint');
  },20);
 }
 
 function saveRun(){if(!gameStarted||isTeaching()||engine.state.game>=TUTORIAL_INDEX)return;
- try{localStorage.setItem(RUN_KEY,JSON.stringify({version:1,state:engine.serialize(),history:engine.history,checkpoint:engine.checkpoint}))}catch{}
+ window.ChocoSave.writeJSON(RUN_KEY,{meta:window.ChocoSave.runMeta(),state:engine.serialize(),history:engine.history,checkpoint:engine.checkpoint});
 }
-function restoreRun(){try{const raw=localStorage.getItem(RUN_KEY);if(!raw)return false;const saved=JSON.parse(raw),st=saved.state;
- if(saved.version!==1||!st||!Number.isInteger(st.game)||st.game<0||st.game>=TUTORIAL_INDEX||!Number.isInteger(st.stage))return false;
- engine.startGame(st.game);if(st.stage<0||st.stage>=engine.currentGame().layers.length)return false;
- const ids=new Set(engine.currentGame().layers[st.stage].tiles.map(x=>x.id));if(!Array.isArray(st.remaining)||st.remaining.some(x=>!ids.has(x))||new Set(st.remaining).size!==st.remaining.length)return false;
- if(!Array.isArray(st.tray)||st.tray.length!==6||st.tray.some(x=>!Number.isInteger(x)||x<0)||st.tray.reduce((a,b)=>a+b,0)>engine.currentGame().cap||![0,1].includes(st.joker))return false;
- engine.loadState(st);engine.checkpoint=saved.checkpoint||engine.stageOrigin();engine.history=Array.isArray(saved.history)?saved.history:[];
- scene.setGame(engine.currentGame());scene.setStage(st.stage,{animate:false});scene.sync(st);renderGame();gameStarted=true;runRestored=true;return true;
+function validSavedState(st){
+ if(!st||!Number.isInteger(st.game)||st.game<0||st.game>=TUTORIAL_INDEX||!Number.isInteger(st.stage))return false;
+ const g=engine.levels[st.game];if(st.stage<0||st.stage>=g.layers.length)return false;
+ const allIds=new Set(g.layers[st.stage].tiles.map(x=>x.id));
+ if(!Array.isArray(st.remaining)||st.remaining.some(x=>!allIds.has(x))||new Set(st.remaining).size!==st.remaining.length)return false;
+ if(!Array.isArray(st.tray)||st.tray.length!==6||st.tray.some(x=>!Number.isInteger(x)||x<0)||st.tray[0]!==0||st.tray.reduce((a,b)=>a+b,0)>g.cap||![0,1].includes(st.joker))return false;
+ return Number.isFinite(st.score)&&st.score>=0&&Number.isInteger(st.chain)&&st.chain>=0;
+}
+function restoreRun(){try{
+ const saved=window.ChocoSave.json(RUN_KEY);if(!saved||!window.ChocoSave.compatibleRun(saved.meta))return false;
+ const st=saved.state;if(!validSavedState(st))return false;
+ const checkpoint=saved.checkpoint;
+ if(!validSavedState(checkpoint)||checkpoint.game!==st.game||checkpoint.stage!==st.stage)return false;
+ const history=saved.history;
+ if(!Array.isArray(history)||history.length>500||history.some(h=>!validSavedState(h)||h.game!==st.game||h.stage!==st.stage))return false;
+ engine.startGame(st.game);engine.loadState(st);engine.checkpoint=checkpoint;engine.history=history;
+ if(scene){scene.setGame(engine.currentGame(),st.stage);scene.sync(st);coverActive=false;}
+ renderGame();gameStarted=true;runRestored=true;return true;
  }catch(e){console.warn('Saved game unavailable',e);return false}}
-function hideNavigation(){const a=$('landing'),b=$('levelSelect');a.hidden=true;b.hidden=true;$('app').classList.remove('is-landing');}
-function showHome(){if(busy)return;jokerMode=false;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('levelSelect').hidden=true;$('landing').hidden=false;$('app').classList.add('is-landing');
- $('entryPlay').setAttribute('aria-label',gameStarted?'继续游戏':'开始游戏');
- // No decorative cover footer: user requested only the accepted title and entry actions.
- if(!gameStarted&&scene){const hero=engine.levels[0];scene.setGame(hero);scene.sync({stage:0,remaining:hero.layers[0].tiles.map(t=>t.id)});}
+// Cover is display-only data. It never reads, saves, or mutates the active run.
+const COVER_GAME=Object.freeze({id:'cover-display',cap:5,layers:[
+ {size:2,tiles:[5,3,2,1].map((lv,i)=>({id:`cover-t${i}`,lv}))},
+ {size:3,tiles:[1,2,3,4,5,2,3,1,4].map((lv,i)=>({id:`cover-m${i}`,lv}))},
+ {size:4,tiles:[2,3,4,1,5,2,1,3,4,1,2,5,3,4,5,2].map((lv,i)=>({id:`cover-b${i}`,lv}))}
+]});
+function showCoverScene(){if(!scene)return;
+ // Never carry gameplay animations or camera stage offsets into the cover.
+ scene.setGame(COVER_GAME,0);
+ scene.sync({stage:0,remaining:COVER_GAME.layers[0].tiles.map(t=>t.id)});
+ coverActive=true;
 }
-function showLevels(){if(busy)return;jokerMode=false;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('landing').hidden=true;$('levelSelect').hidden=false;$('app').classList.add('is-landing');
+function restorePlayScene(){if(!coverActive||!scene)return;
+ scene.setGame(engine.currentGame(),engine.state.stage);
+ scene.sync(engine.state);
+ coverActive=false;
+}
+function hideNavigation(){
+ const a=$('landing'),b=$('levelSelect');a.hidden=true;b.hidden=true;
+ $('app').classList.remove('is-landing');restorePlayScene();
+}
+function showHome(){if(busy)return;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('levelSelect').hidden=true;$('landing').hidden=false;$('app').classList.add('is-landing');
+ $('entryPlay').setAttribute('aria-label',gameStarted?'继续游戏':'开始游戏');
+ showCoverScene();
+}
+function showLevels(){if(busy)return;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('landing').hidden=true;$('levelSelect').hidden=false;$('app').classList.add('is-landing');
  const names=['第一座金字塔','第二座金字塔','第三座金字塔'];
  $('levelList').innerHTML=engine.levels.slice(0,TUTORIAL_INDEX).map((g,i)=>`<button type="button" class="level-row" data-open-level="${i}" aria-label="${names[i]||'金字塔'}，三层"><span class="level-number">${String(i+1).padStart(2,'0')}</span><span class="level-meta"><span class="level-name">${names[i]||'巧克力金字塔'}</span><span class="level-info">3 层　·　${awards[i]?'✦ 完美收藏':i<completed?'已完成':'自由挑战'}</span></span><span class="level-icon">›</span></button>`).join('');
 }
@@ -1665,16 +1868,16 @@ $('levelList').addEventListener('click',e=>{const b=e.target.closest('[data-open
 
 function showDialog(type){const d=$('dialog');let html='';
  if(type==='welcome'){html=`<div class="illustration">🍫</div><h2>以巧克力</h2><p>从第一块开始。边玩边学，不用记规则。</p><div class="buttons"><button class="primary" data-act="begin-tutorial">开始教学</button><button data-act="skip-tutorial">直接开始</button></div>`}
- if(type==='tutorial-win'){html=`<div class="illustration">✦</div><h2>现在交给你了</h2><p>你已经学会了取牌、合成、消除和清层。准备好挑战真正的巧克力金字塔了吗？</p><div class="buttons"><button class="primary" data-act="open-game">开始游戏</button><button data-act="again-tutorial">再玩一次教程</button></div>`}
- if(type==='intro'){html=`<div class="illustration">🍫</div><h2>以巧克力</h2><p>一层层拆开巧克力金字塔。</p><div class="tip-list"><div>轻点顶层巧克力，放进下方的 3D 小盘子。最多收纳五块。</div><div><b>两块同级</b>：点击任意一块，合成升级。<br><b>三块同级</b>：点击直接消除；长按后左滑合成两块、右滑消除。</div><div>颜色从左往右升级，最高级需要<b>三块</b>才可结算。万能槽空时生成一块万能巧克力；槽满则正常三消。</div><div>点击万能槽，再点击盘中<b>两块同级</b>完成消除。通关时保留万能巧克力，可解锁额外成就。顶部只显示当前层目标。</div></div><div class="buttons"><button class="primary" data-act="play">开始</button></div>`}
- if(type==='menu'){html=`<div class="illustration">◈</div><h2>以巧克力</h2><p>暂停 · 选择另一座金字塔，或继续。</p><div class="chapter-pills">${engine.levels.slice(0,TUTORIAL_INDEX).map((g,i)=>`<button class="chapter ${engine.state.game===i?'active':''}" data-game="${i}">${['Ⅰ','Ⅱ','Ⅲ'][i]||i+1}${awards[i]?' ✦':''}</button>`).join('')}</div><div class="buttons"><button class="primary" data-act="resume">继续游戏</button><button data-act="restart-game">↶ 整关重来</button><button data-act="levels">选关</button><button data-act="home">返回封面</button><button data-act="tutorial">新手教程</button><button data-act="help">玩法说明</button><button data-act="mute">${sound.muted?'开启音效':'关闭音效'}</button><button data-act="haptics" ${haptics.supported?'':'disabled'}>${haptics.supported?(haptics.enabled?'关闭振动':'开启振动'):'振动不可用（当前浏览器）'}</button>${haptics.ios?'<button data-act="test-haptics">测试 iPhone 触感</button>':''}</div>`}
- if(type==='restart-game'){html=`<div class="illustration">↶</div><h2>重新开始整座金字塔？</h2><p>会清除本次挑战的全部层进度和万能巧克力。已获得的成就记录不会丢失。</p><div class="buttons"><button class="primary" data-act="confirm-restart-game">整关重来</button><button data-act="back-menu">返回菜单</button></div>`}
+ if(type==='tutorial-win'){html=`<div class="illustration">✦</div><h2>现在交给你了</h2><p>你已经学会了取牌、合成、消除和使用金色。${tutorialGoldReward?'你还保留了金色，获得了额外奖励！':'留着金色通关，可以获得额外奖励。'}准备好挑战真正的巧克力金字塔了吗？</p><div class="buttons"><button class="primary" data-act="open-game">开始游戏</button><button data-act="again-tutorial">再玩一次教程</button></div>`}
+ if(type==='intro'){html=`<div class="illustration">🍫</div><h2>以巧克力</h2><p>一层层拆开巧克力金字塔。</p><div class="tip-list"><div>轻点顶层巧克力，放进下方的 3D 小盘子。最多收纳五块。</div><div><b>两块同色</b>：点击合成下一种颜色。<br><b>三块同色</b>：点击消除。长按可选择向左合成、向右消除；不可用的选项会变淡。</div><div>巧克力依次从粉色、黄色、绿色、橙色合成到深棕色。<b>三块深棕</b>合成金色；如果已经有金色，则正常三消。</div><div>有金色时，长按<b>恰好两块同色</b>并向右滑，可消耗金色直接消除。金色不占容量，留到通关还有额外成就。</div></div><div class="buttons"><button class="primary" data-act="play">开始</button></div>`}
+ if(type==='menu'){html=`<div class="illustration">◈</div><h2>以巧克力</h2><p>暂停 · 继续、重来或选择关卡。</p><div class="buttons"><button class="primary" data-act="resume">继续游戏</button><button data-act="restart-game">↶ 整关重来</button><button data-act="levels">选关</button><button data-act="home">返回封面</button><button data-act="tutorial">新手教程</button><button data-act="help">玩法说明</button><button data-act="mute">${sound.muted?'开启音效':'关闭音效'}</button><button data-act="haptics" ${haptics.supported?'':'disabled'}>${haptics.supported?(haptics.enabled?'关闭振动':'开启振动'):'振动不可用（当前浏览器）'}</button>${haptics.ios?'<button data-act="test-haptics">测试 iPhone 触感</button>':''}</div>`}
+ if(type==='restart-game'){html=`<div class="illustration">↶</div><h2>重新开始整座金字塔？</h2><p>会清除本次挑战的全部层进度和金色巧克力。已获得的成就记录不会丢失。</p><div class="buttons"><button class="primary" data-act="confirm-restart-game">整关重来</button><button data-act="back-menu">返回菜单</button></div>`}
  if(type==='dead'){html=`<div class="illustration">♧</div><h2>暂时卡住了</h2><p>这一层还没完成，但当前没有可以继续的操作。<br>可以撤销一步，也可以从本层检查点重来。</p><div class="buttons"><button class="primary" data-act="undo-dialog" ${engine.history.length?'':'disabled'}>撤销一步</button><button data-act="restart-layer">重试本层</button></div>`}
- if(type==='win'){html=`<div class="illustration ${engine.state.joker?'award-illustration':''}">${engine.state.joker?'✦':'◇'}</div><h2>${engine.state.joker?'完美收藏':'整座巧克力清空了'}</h2><p>${engine.state.joker?'通关时保留一块万能巧克力，获得这一关的额外成就。':'已完成全部层。若想挑战额外成就，试着在通关时留下万能巧克力。'}</p><div class="buttons"><button class="primary" data-act="next-game">${engine.state.game<engine.levels.length-1?'下一座金字塔':'从第一座再来'}</button><button data-act="this-game">再玩这一座</button><button data-act="levels">选关</button><button data-act="home">返回封面</button></div>`}
+ if(type==='win'){html=`<div class="illustration ${engine.state.joker?'award-illustration':''}">${engine.state.joker?'✦':'◇'}</div><h2>${engine.state.joker?'完美收藏':'整座巧克力清空了'}</h2><p>${engine.state.joker?'通关时保留一块金色巧克力，获得这一关的额外成就。':'已完成全部层。若想挑战额外成就，试着在通关时留下金色巧克力。'}</p><div class="buttons"><button class="primary" data-act="next-game">${engine.state.game<engine.levels.length-1?'下一座金字塔':'从第一座再来'}</button><button data-act="this-game">再玩这一座</button><button data-act="levels">选关</button><button data-act="home">返回封面</button></div>`}
  d.innerHTML=html;$('overlay').classList.remove('hidden');
  d.querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{
-  const a=b.dataset.act;if(a==='begin-tutorial'||a==='again-tutorial'||a==='tutorial')beginTutorial();else if(a==='skip-tutorial')skipTutorial();else if(a==='open-game')leaveTutorialForGame();else if(a==='play'){try{localStorage.setItem('choco-intro','1')}catch{};hideDialog()}
-  else if(a==='resume')hideDialog();else if(a==='levels')showLevels();else if(a==='home')showHome();else if(a==='restart-layer')resetLayer();else if(a==='help')showDialog('intro');else if(a==='mute'){sound.toggle();showDialog('menu')}else if(a==='haptics'){haptics.toggle();showDialog('menu')}else if(a==='test-haptics'){haptics.feedback(12)}
+  const a=b.dataset.act;if(a==='begin-tutorial'||a==='again-tutorial'||a==='tutorial')beginTutorial();else if(a==='skip-tutorial')skipTutorial();else if(a==='open-game')leaveTutorialForGame();else if(a==='play'){hideDialog()}
+  else if(a==='resume')hideDialog();else if(a==='levels')showLevels();else if(a==='home')showHome();else if(a==='restart-layer')resetLayer();else if(a==='help')showDialog('intro');else if(a==='mute'){sound.toggle();showDialog('menu')}else if(a==='haptics'){haptics.toggle();if(haptics.enabled)haptic(5);showDialog('menu')}else if(a==='test-haptics'){haptics.feedback(12)}
   else if(a==='undo-dialog'){hideDialog();undo()}
   else if(a==='restart-game')showDialog('restart-game');else if(a==='confirm-restart-game'){if(isTeaching())beginTutorial();else startGame(engine.state.game);}else if(a==='back-menu')showDialog('menu')
   else if(a==='next-game')startGame((engine.state.game+1)%TUTORIAL_INDEX);else if(a==='this-game')startGame(engine.state.game);
@@ -1688,17 +1891,23 @@ $('hintBtn').addEventListener('click',findHint);
 $('restartBtn').addEventListener('click',resetLayer);
 const gestureMenu=document.createElement('div');gestureMenu.id='gestureMenu';gestureMenu.className='gesture-menu';gestureMenu.hidden=true;gestureMenu.innerHTML='<span class="choice left" data-choice="left"><span class="word">合成</span><span class="arrow">←</span></span><span class="gesture-origin"></span><span class="choice right" data-choice="right"><span class="arrow">→</span><span class="word">消除</span></span>';$('app').appendChild(gestureMenu);const gestureFocus=document.createElement('div');gestureFocus.id='gestureFocus';gestureFocus.hidden=true;gestureFocus.className='gesture-focus';$('app').appendChild(gestureFocus);
 const goldCoach=document.createElement('div');goldCoach.id='goldCoach';goldCoach.className='gold-coach';goldCoach.hidden=true;
- goldCoach.innerHTML='<div class="gold-coach-text">三块最高级，获得万能巧克力。\n可以消除两块同色，也可以留到通关。</div><button type="button">继续</button>';
+ goldCoach.innerHTML='<div class="gold-coach-defocus" aria-hidden="true"></div><div class="gold-coach-text">三块深棕巧克力，合成一块金色。\n金色不占容量。\n按住恰好两块同色向右滑，可以消耗金色消除。</div><button type="button">继续</button>';
  $('app').appendChild(goldCoach);goldCoach.querySelector('button').addEventListener('click',goldCoachDismiss);
  const goldUseHint=document.createElement('div');goldUseHint.id='goldUseHint';goldUseHint.className='gold-use-hint';goldUseHint.hidden=true;$('app').appendChild(goldUseHint);
- $('jokerSlot').addEventListener('click',()=>{if(!canInput()||!engine.state.joker)return;
-  jokerMode=!jokerMode;renderTray();
-  if(jokerMode){showGoldUseHint();haptic(8)}else hideGoldHint();
- });
+ $('jokerSlot').addEventListener('click',showGoldUseHint);
+ // A single semantic button confirmation across UI, not the 3D gameplay hit regions.
+ // The ordinary gameplay controls already have their own action haptics.
+ const chromeButtons=new Set(['menuBtn','undoBtn','restartBtn','hintBtn','teachContinue','teachSkip','entryPlay','entryLevels','levelBack','goldCoachContinue']);
+ document.addEventListener('click',e=>{const btn=e.target.closest?.('button');if(!btn||btn.disabled)return;
+  if(btn.closest('.dish-hit-layer')||btn.id==='jokerSlot'||btn.dataset?.act==='test-haptics')return;
+  if(btn.dataset?.act==='haptics'){if(haptics.enabled)haptic(5);return;}
+  if(chromeButtons.has(btn.id)||btn.closest('#dialog')||btn.closest('.level-list')||btn.closest('#goldCoach'))haptic(5);
+ },true);
+
 $('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))hideDialog()});
-try{completed=Number(localStorage.getItem('choco-progress')||0);awards=JSON.parse(localStorage.getItem('choco-awards-v02')||'{}')}catch{awards={}}
+{const profile=window.ChocoSave.json('profile',{});completed=Number.isInteger(profile?.completed)?Math.max(0,Math.min(profile.completed,TUTORIAL_INDEX)):0;awards=profile?.awards&&typeof profile.awards==='object'&&!Array.isArray(profile.awards)?profile.awards:{}}
 try{scene=new window.ChocolateScene($('sceneHost'),pick);dish=new window.ChocoDish($('columns'),scene);bindDishSurface();scene.setGame(engine.currentGame());renderGame();restoreRun();showHome();}catch(e){console.error(e);$('sceneHost').innerHTML=`<div style="padding:50px 20px;text-align:center;color:#806654;font-size:15px">3D 渲染暂不可用，请确认浏览器已启用 WebGL。<br><small>${String(e.message).slice(0,140)}</small></div>`;}
-window.__choco={engine,get scene(){return scene},get dish(){return dish},refreshUI:renderGame,startGame,resetLayer,pick,doAction,showDialog,findHint,undo,beginTutorial,skipTutorial,get tutorial(){return {...tutorial}},teacherNext,showHome,showLevels,hideNavigation,restoreRun,saveRun,tutorialStatus};
+window.__choco={engine,save:window.ChocoSave,get coverActive(){return coverActive},get scene(){return scene},get dish(){return dish},refreshUI:renderGame,startGame,resetLayer,pick,doAction,showDialog,findHint,undo,beginTutorial,skipTutorial,get tutorial(){return {...tutorial}},teacherNext,showHome,showLevels,hideNavigation,restoreRun,saveRun,tutorialStatus};
 })();
 
 </script>
