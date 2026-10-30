@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#F0E3D5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>以巧克力 · v0.2.10.5</title>
+<title>以巧克力 · v0.2.10.6</title>
 <style>
 :root{--cream:#FFF7ED;--ink:#68564E;--muted:#AA958A;--edge:#E9DCCF;--shell:#FFFAF4;--shell-hi:#fffdf7;--shadow:rgba(110,81,54,.13);--pink:#EBA7B0;--yellow:#EFD18A;--green:#B3D5AE;--purple:#BCA8DC;--blue:#9ACBDF;--peach:#dcaa7f;color-scheme:light}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}html{background:var(--cream)}body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif;color:var(--ink);touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}button{font:inherit;touch-action:manipulation;cursor:pointer}button:focus-visible{outline:3px solid #8fa9b2;outline-offset:3px}button:disabled{opacity:.32;cursor:default}.app{position:relative;isolation:isolate;width:100%;height:100vh;height:100dvh;max-width:650px;min-height:580px;margin:0 auto;overflow:hidden;display:flex;flex-direction:column;background:radial-gradient(ellipse 75% 37% at 14% 20%,#fffdfa 0,transparent 90%),radial-gradient(ellipse 80% 60% at 100% 68%,#f8e9d8 0,transparent 96%),var(--cream)}
@@ -278,6 +278,19 @@ html{background:#F0E3D5}
 .teach-card.welcome-line p{font-size:clamp(16px,4.4vw,20px);font-weight:650;line-height:1.5;color:#79594c;text-shadow:0 1px 8px #fff5e9}
 .teach-card.welcome-line .teach-continue{margin-top:16px}
 .teach-spot:has(+ .teach-card.welcome-line) .teach-defocus{opacity:1!important;animation:none!important;--focus-blur:2.1px;--focus-tint:.032}
+
+/* v0.2.10.6: gold onboarding only, separate from the three-layer tutorial. */
+.gold-coach[hidden],.gold-use-hint[hidden]{display:none!important}
+.gold-coach{position:absolute;inset:0;z-index:67;background:rgba(246,230,208,.19);backdrop-filter:blur(1.7px);-webkit-backdrop-filter:blur(1.7px);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 18px clamp(190px,29dvh,266px);pointer-events:auto;text-align:center}
+.gold-coach .gold-coach-text{max-width:290px;white-space:pre-line;font-size:14px;font-weight:730;line-height:1.85;color:#705544;text-shadow:0 1px 2px #fff7ed}
+.gold-coach button{margin-top:13px;background:#b88d6e;color:white;border:0;border-radius:12px;padding:9px 21px;font-size:13px;font-weight:700;box-shadow:0 3px 12px #9f735021}
+.gold-use-hint{position:absolute;z-index:51;left:50%;bottom:clamp(235px,35dvh,330px);transform:translateX(-50%);width:max-content;max-width:80%;pointer-events:none;text-align:center;color:#785b43;font-size:12.5px;line-height:1.7;font-weight:710;text-shadow:0 1px 3px #fffaf2;white-space:pre-line}
+.joker-slot.gold-fanfare{animation:goldSlotArrival .65s ease-out both}
+@keyframes goldSlotArrival{0%{filter:brightness(1);transform:scale(.92)}48%{filter:brightness(1.25);transform:scale(1.09)}100%{filter:brightness(1);transform:scale(1)}}
+.joker-slot.gold-spending .joker-chocolate,.joker-slot.gold-arriving .joker-chocolate{opacity:0}
+.gold-flight{position:fixed;z-index:69;width:51px;height:51px;pointer-events:none;filter:drop-shadow(0 0 8px #f4d88b9c);will-change:transform,opacity}
+@media(max-height:710px){.gold-coach{padding-bottom:178px}.gold-use-hint{bottom:220px}}
+@media(prefers-reduced-motion:reduce){.joker-slot.gold-fanfare{animation:none}}
 </style>
 
 
@@ -398,6 +411,16 @@ window.ChocoSound=class ChocoSound {
    gain.gain.exponentialRampToValueAtTime(.0001,at+d);
    osc.connect(gain);gain.connect(this.bus);osc.start(at);osc.stop(at+d+.01);
   });
+  if(name==='joker'||name==='wild'){
+   const at=t+(name==='joker'?.105:.04),duration=name==='joker'?.26:.17;
+   const tone=ctx.createOscillator(),env=ctx.createGain();tone.type='sine';
+   tone.frequency.setValueAtTime(name==='joker'?980:1050,at);
+   tone.frequency.exponentialRampToValueAtTime(name==='joker'?1470:590,at+duration);
+   env.gain.setValueAtTime(.0001,at);
+   env.gain.exponentialRampToValueAtTime(name==='joker'?.013:.011,at+.012);
+   env.gain.exponentialRampToValueAtTime(.0001,at+duration);
+   tone.connect(env);env.connect(this.bus);tone.start(at);tone.stop(at+duration+.01);
+  }
   if(['merge','clear','joker','wild'].includes(name)){
    // A tiny soft tap for merge; brighter cocoa-crumb crackle for clear/joker.
    const n=Math.floor(ctx.sampleRate*.052),buf=ctx.createBuffer(1,n,ctx.sampleRate),data=buf.getChannelData(0);
@@ -1061,7 +1084,7 @@ class ChocoDish {
   this.renderer.setSize(w,h,false);const half=Math.max(2.72,2.72/aspect);this.camera.left=-half*aspect;this.camera.right=half*aspect;this.camera.top=half;this.camera.bottom=-half;this.camera.updateProjectionMatrix();this.render();}
  point(i){const cell=SLOTS[i];return new T.Vector3(cell.x,.20,cell.z)}
  project(i){const p=this.point(i).project(this.camera),r=this.host.getBoundingClientRect();return {x:(p.x+1)*.5*r.width,y:(1-p.y)*.5*r.height};}
- update(tray){if(this.focusLevel)this.clearHighlight();const target=bestLayout(tray,this.previous);const animations=[];const now=performance.now();
+ update(tray){if(this.focusKey)this.clearHighlight();const target=bestLayout(tray,this.previous);const animations=[];const now=performance.now();
   for(let lv=1;lv<=5;lv++){
    const wanted=target[lv]||[],list=this.meshes[lv]||(this.meshes[lv]=[]),old=this.previous[lv]||[];
    // Assign existing objects to nearest target anchors to avoid gratuitous reordering.
@@ -1089,7 +1112,7 @@ class ChocoDish {
   }else this.render();
  }
 
- animateResolve(kind,lv,after,done){
+ animateResolve(kind,lv,after,done,opts={}){
   if(this.focusLevel)this.clearHighlight();
   const take=kind==='merge'||kind==='wild-clear'?2:3;
   const list=this.meshes[lv]||[],selected=list.slice(-take);
@@ -1103,15 +1126,19 @@ class ChocoDish {
   })() : center;
   const born=isMerge?new T.Mesh(this.tower.geometry,this.tower.materials[lv+1]):null;
   if(born){born.castShadow=false;born.position.copy(center);born.position.y=.46;born.scale.setScalar(.001);this.scene.add(born)}
+   const goldEffect=!!opts.jokerCreated||kind==='wild-clear';
+   const goldMat=goldEffect?new T.MeshPhysicalMaterial({color:0xecc47c,metalness:.26,roughness:.23,clearcoat:.55,emissive:0x7b4d0a,emissiveIntensity:.16}):null;
+   const gold=goldEffect?new T.Mesh(this.tower.geometry,goldMat):null;
+   if(gold){gold.castShadow=false;gold.position.copy(center);gold.position.y=.43;gold.scale.setScalar(.001);this.scene.add(gold)}
   const crumbs=[];
   if(!isMerge){const mat=new T.MeshBasicMaterial({color:new T.Color(this.tower.materials[lv][0]?.color || 0xe7b29d),transparent:true,opacity:.86,depthWrite:false});
    const geo=new T.TetrahedronGeometry(.076,0);
    for(let i=0;i<9;i++){const m=new T.Mesh(geo,mat);m.position.copy(center);m.userData.a=i*Math.PI*2/9;m.scale.setScalar(0);this.scene.add(m);crumbs.push(m)}
   }
-  const baseScale=.89, duration=kind==='merge'?410:290,begin=performance.now(),ease=t=>1-Math.pow(1-t,3),id=(this.motionEpoch=(this.motionEpoch||0)+1);
+  const baseScale=.89, duration=kind==='merge'?410:goldEffect?410:290,begin=performance.now(),ease=t=>1-Math.pow(1-t,3),id=(this.motionEpoch=(this.motionEpoch||0)+1);
   let complete=false;
   const finish=()=>{if(complete)return;complete=true;for(const m of selected){m.scale.setScalar(baseScale);}
-   if(born)this.scene.remove(born);for(const m of crumbs)this.scene.remove(m);
+   if(born)this.scene.remove(born);if(gold){this.scene.remove(gold);goldMat.dispose();}for(const m of crumbs)this.scene.remove(m);
    if(crumbs.length){crumbs[0].geometry.dispose();crumbs[0].material.dispose()}
    this.render();done();};
   const frame=now=>{
@@ -1122,6 +1149,10 @@ class ChocoDish {
     else {const q=(t-.55)/.45; m.position.lerpVectors(starts[i],center,.87+.13*ease(q));m.position.y=center.y+.07*Math.sin(q*Math.PI);m.scale.setScalar(baseScale*.80*Math.max(.001,1-ease(q)))}
    });
    if(born){const q=Math.max(0,(t-.39)/.61),b=ease(q);born.position.lerpVectors(center,target,b);born.position.y=.20 + .52*Math.sin(Math.PI*b)+ .09*(1-b);born.scale.setScalar(Math.max(.001,baseScale*(b<.6?b/.6*1.16:1.16-(b-.6)/.4*.16)))}
+   if(gold){const q=Math.max(0,(t-(kind==='wild-clear'?.12:.38))/(kind==='wild-clear'?.65:.62)),b=ease(Math.min(1,q));
+    gold.position.set(center.x, .30+.46*Math.sin(Math.PI*b)+.12,center.z);
+    gold.rotation.y=b*.34;
+    gold.scale.setScalar(baseScale*(kind==='wild-clear'?(1-b)*.94:1.06*b)*(1+.06*Math.sin(b*Math.PI)));}
    for(const m of crumbs){const q=Math.max(0,(t-.47)/.53),ang=m.userData.a;
     m.position.set(center.x+Math.cos(ang)*(q*.59),center.y+.16+.35*q-.20*q*q,center.z+Math.sin(ang)*(q*.59));m.rotation.set(q*5,ang+q*3,q*3);m.scale.setScalar(.75*Math.sin(Math.PI*q));m.material.opacity=Math.max(.02,.86*(1-q));}
    this.render();if(t<1)requestAnimationFrame(frame);else finish();
@@ -1137,12 +1168,14 @@ class ChocoDish {
   requestAnimationFrame(draw);
  }
 
- highlightLevel(lv){
-  if(this.focusLevel===lv)return;
-  this.clearHighlight();this.focusLevel=lv||null;
-  if(!lv)return;
+ highlightLevel(lv){this.highlightLevels(lv?[lv]:[])}
+ highlightLevels(levels){
+  const sorted=[...new Set(levels)].sort((a,b)=>a-b),key=sorted.join(',');
+  if(this.focusKey===key)return;
+  this.clearHighlight();this.focusKey=key;this.focusLevel=sorted.length===1?sorted[0]:null;
+  if(!sorted.length)return;
   this.focusPieces=[];
-  for(const mesh of this.meshes[lv]||[]){
+  for(const lv of sorted)for(const mesh of this.meshes[lv]||[]){
    const shine=new T.Mesh(this.tower.geometry,this.tower.highlightSurfaceMaterial);
    shine.renderOrder=45;shine.raycast=()=>{};mesh.add(shine);this.focusPieces.push(shine);
    for(let i=0;i<2;i++){
@@ -1154,7 +1187,7 @@ class ChocoDish {
   }
   this.render();
  }
- clearHighlight(){for(const part of this.focusPieces||[])part.parent?.remove(part);this.focusPieces=[];this.focusLevel=null;this.render()}
+ clearHighlight(){for(const part of this.focusPieces||[])part.parent?.remove(part);this.focusPieces=[];this.focusLevel=null;this.focusKey="";this.render()}
  projectedHulls(lv){const meshes=this.meshes[lv]||[],out=[];
   const pos=this.tower.geometry.getAttribute('position'),r=this.renderer.domElement.getBoundingClientRect();
   const cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
@@ -1204,7 +1237,32 @@ const sound=new window.ChocoSound();
 const haptics=new window.ChocoHaptics();
 let scene=null,dish=null,busy=false,locked=false,toastTimer=null,activeToast=0,completed=0,ignoreNext=null,lastDangerState="",jokerMode=false,awards={};
 const max=5;
+const GOLD_CREATION_KEY='1chocolate-gold-created-taught-v02106';
+const GOLD_USE_KEY='1chocolate-gold-use-taught-v02106';
 const visual=window.ChocoVisual;
+let goldCoachPending=null,goldHintTimer=null;
+function seenGold(key){try{return localStorage.getItem(key)==='1'}catch{return false}}
+function markGold(key){try{localStorage.setItem(key,'1')}catch{}}
+function hideGoldHint(){clearTimeout(goldHintTimer);document.getElementById('goldUseHint')?.setAttribute('hidden','')}
+function goldCoachDismiss(){const panel=document.getElementById('goldCoach');panel.hidden=true;markGold(GOLD_CREATION_KEY);const cb=goldCoachPending;goldCoachPending=null;cb?.()}
+function showGoldCoach(onContinue){if(seenGold(GOLD_CREATION_KEY)||isTeaching())return false;
+ goldCoachPending=onContinue;
+ document.getElementById('goldCoach').hidden=false;
+ return true;
+}
+function showGoldUseHint(){if(seenGold(GOLD_USE_KEY)||isTeaching())return;
+ const hint=document.getElementById('goldUseHint');hint.textContent='选择盘里两块同色巧克力，使用万能消除。\n再点金色，可取消。';hint.hidden=false;
+ clearTimeout(goldHintTimer);goldHintTimer=setTimeout(()=>{hint.hidden=true},5200);
+}
+function goldFlight(from,to,ms=300){if(!from||!to)return;const root=document.getElementById('flyingLayer');
+ const el=document.createElement('div');el.className='gold-flight';el.innerHTML=visual.piece('gold');
+ el.style.left=(from.x-25)+'px';el.style.top=(from.y-25)+'px';root.appendChild(el);
+ const dx=to.x-from.x,dy=to.y-from.y;
+ const anim=el.animate([{transform:'translate3d(0,0,0) scale(.84)',opacity:.92},{offset:.55,transform:`translate3d(${dx*.55}px,${dy*.55-22}px,0) scale(1.13)`,opacity:1},{transform:`translate3d(${dx}px,${dy}px,0) scale(.6)`,opacity:0}],{duration:ms,easing:'cubic-bezier(.22,.74,.22,1)',fill:'forwards'});
+ anim.onfinish=()=>el.remove();setTimeout(()=>el.remove(),ms+200);
+}
+function centerOfElement(id){const r=document.getElementById(id).getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}}
+
 const tutorial={active:false,phase:'',step:0,silent:false,pending:false,epoch:0};
 let gameStarted=false,runRestored=false;const RUN_KEY='choco-run-v02103';
 // The learning curriculum is versioned independently of saved game state.
@@ -1457,9 +1515,11 @@ function bindDishSurface(){const surface=$('dishHitLayer');let touch=null,timer=
  surface.addEventListener('lostpointercapture',()=>{if(touch)cancel()});
 }
 function bindDishButton(col,lv){col.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onColumn(lv,false,false)}else if(e.key==='ArrowLeft'){e.preventDefault();onColumn(lv,true,false)}else if(e.key==='ArrowRight'){e.preventDefault();onColumn(lv,false,false)}});}
-function renderTray(){const tray=engine.state.tray;const host=$('dishHitLayer');
+function renderTray(){if(!jokerMode)hideGoldHint();const tray=engine.state.tray;const host=$('dishHitLayer');
  if(!dish)return;
- dish.update(tray);host.replaceChildren();
+ dish.update(tray);
+ if(jokerMode&&engine.state.joker)dish.highlightLevels([1,2,3,4,5].filter(lv=>tray[lv]>=2));
+ host.replaceChildren();
  for(let lv=1;lv<=max;lv++){
   const n=tray[lv];for(const xy of dish.locations[lv]||[]){
    const col=document.createElement('button');col.type='button';col.className='color-column'+(n>=3||(n>=2&&lv<max)?' can-act':'')+(jokerMode&&engine.state.joker&&n>=2?' joker-target':'');col.dataset.lv=lv;
@@ -1484,11 +1544,12 @@ function renderTray(){const tray=engine.state.tray;const host=$('dishHitLayer');
  $('undoBtn').disabled=!engine.history.length||(isTeaching()&&tutorial.phase!=='free');
 }
 function renderGame(syncScene=true){goalRender();renderTray();if(syncScene)scene?.sync(engine.state);if(isTeaching()){setTimeout(updateTeacher,0);}else saveRun(); }
-function canInput(){return !busy&&!locked&&!isOverlayOpen()&&!tutorialInputLocked()}
+function canInput(){return !busy&&!locked&&!isOverlayOpen()&&!goldCoachPending&&!tutorialInputLocked()}
 function tutorialInputLocked(){return isTeaching()&&['notice','capacity-notice','transition'].includes(tutorial.phase)}
 function isOverlayOpen(){return !$('overlay').classList.contains('hidden')}
 function pick(id){if(!canInput())return;if(!teacherAccept('pick',id))return;const card=engine.getCard(id);if(!card)return;
  const from=scene.tileScreenPoint(id);const action=engine.apply('pick',id);if(!action){sound.play('bad');say('合成槽已满');return;}
+ if(jokerMode){jokerMode=false;hideGoldHint();dish?.highlightLevels([])}
  sound.unlock();sound.play('pick');scene.removeCard(id);renderGame(false);fly(from,card.lv);
  if(haptics.ios)haptic(7);else setTimeout(()=>haptic(7),isTeaching()?530:285);
  if(strictTeaching()){busy=true;tutorialHold('pick',id,770,()=>{busy=false;postAction(0)})}
@@ -1506,7 +1567,7 @@ function colCenter(lv){const els=[...document.querySelectorAll(`.color-column[da
  const pts=els.map(el=>el.getBoundingClientRect());return {x:pts.reduce((a,r)=>a+r.left+r.width/2,0)/pts.length,y:pts.reduce((a,r)=>a+r.top+r.height/2,0)/pts.length};}
 function doAction(kind,lv,source='tap'){if(!canInput()||!engine.can(kind,lv)||!teacherAccept(kind,lv,source))return;
  const pt=colCenter(lv);const result=engine.apply(kind,lv);if(!result)return;
- jokerMode=false;busy=true;
+ jokerMode=false;hideGoldHint();$('jokerSlot').classList.remove('selected');if(kind==='wild-clear')markGold(GOLD_USE_KEY);busy=true;
  if(kind==='merge'){
   // The merge rule is explained directly below the capacity rule in the same paused lesson.
   haptic(8);setTimeout(()=>sound.play('merge',lv),175);
@@ -1516,13 +1577,24 @@ function doAction(kind,lv,source='tap'){if(!canInput()||!engine.can(kind,lv)||!t
    else {busy=false;postAction(0)}
   });
  } else {
-  haptic(8);setTimeout(()=>{sound.play(result.jokerCreated?'joker':kind==='wild-clear'?'wild':'clear',engine.state.chain);haptic(15)},135);
+  haptic(8);
+  const goldFrom=centerOfElement('jokerSlot');
+  if(kind==='wild-clear')$('jokerSlot').classList.add('gold-spending');
+  if(kind==='wild-clear'&&pt){goldFlight(goldFrom,pt,260);}
+  setTimeout(()=>{sound.play(result.jokerCreated?'joker':kind==='wild-clear'?'wild':'clear',engine.state.chain);haptic(result.jokerCreated||kind==='wild-clear'?19:15)},kind==='wild-clear'?205:185);
   dish.animateResolve(kind,lv,engine.state.tray,()=>{
-   renderGame();if(pt)pulse(pt.x,pt.y,lv,result.jokerCreated?13:9);
-   if(result.jokerCreated){$('jokerSlot').animate([{transform:'scale(.92)'},{transform:'scale(1.09)'},{transform:'scale(1)'}],{duration:400});say('获得万能巧克力 ✦',1100)}
-   if(strictTeaching())tutorialHold(kind,lv,440,()=>{busy=false;postAction(0)},source);
-   else {busy=false;postAction(0)}
-  });
+   renderGame();$('jokerSlot').classList.remove('gold-spending');if(pt)pulse(pt.x,pt.y,result.jokerCreated?5:lv,result.jokerCreated?15:kind==='wild-clear'?12:9);
+   if(result.jokerCreated){
+    $('jokerSlot').classList.add('gold-arriving');
+    if(pt)goldFlight(pt,centerOfElement('jokerSlot'),310);
+    setTimeout(()=>$('jokerSlot').classList.remove('gold-arriving'),310);
+    $('jokerSlot').classList.add('gold-fanfare');setTimeout(()=>$('jokerSlot').classList.remove('gold-fanfare'),700);
+   }
+   const proceed=()=>{if(strictTeaching())tutorialHold(kind,lv,440,()=>{busy=false;postAction(0)},source);
+    else {busy=false;postAction(0)}};
+   if(result.jokerCreated&&showGoldCoach(proceed)){busy=false;return;}
+   proceed();
+  },{jokerCreated:!!result.jokerCreated});
  }
 }
 function postAction(delay){if(delay){setTimeout(()=>postAction(0),delay);return}if(isOverlayOpen())return;
@@ -1573,12 +1645,12 @@ function restoreRun(){try{const raw=localStorage.getItem(RUN_KEY);if(!raw)return
  scene.setGame(engine.currentGame());scene.setStage(st.stage,{animate:false});scene.sync(st);renderGame();gameStarted=true;runRestored=true;return true;
  }catch(e){console.warn('Saved game unavailable',e);return false}}
 function hideNavigation(){const a=$('landing'),b=$('levelSelect');a.hidden=true;b.hidden=true;$('app').classList.remove('is-landing');}
-function showHome(){if(busy)return;menuDismiss();hideDialog();$('levelSelect').hidden=true;$('landing').hidden=false;$('app').classList.add('is-landing');
+function showHome(){if(busy)return;jokerMode=false;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('levelSelect').hidden=true;$('landing').hidden=false;$('app').classList.add('is-landing');
  $('entryPlay').setAttribute('aria-label',gameStarted?'继续游戏':'开始游戏');
  // No decorative cover footer: user requested only the accepted title and entry actions.
  if(!gameStarted&&scene){const hero=engine.levels[0];scene.setGame(hero);scene.sync({stage:0,remaining:hero.layers[0].tiles.map(t=>t.id)});}
 }
-function showLevels(){if(busy)return;menuDismiss();hideDialog();$('landing').hidden=true;$('levelSelect').hidden=false;$('app').classList.add('is-landing');
+function showLevels(){if(busy)return;jokerMode=false;hideGoldHint();dish?.highlightLevels([]);menuDismiss();hideDialog();$('landing').hidden=true;$('levelSelect').hidden=false;$('app').classList.add('is-landing');
  const names=['第一座金字塔','第二座金字塔','第三座金字塔'];
  $('levelList').innerHTML=engine.levels.slice(0,TUTORIAL_INDEX).map((g,i)=>`<button type="button" class="level-row" data-open-level="${i}" aria-label="${names[i]||'金字塔'}，三层"><span class="level-number">${String(i+1).padStart(2,'0')}</span><span class="level-meta"><span class="level-name">${names[i]||'巧克力金字塔'}</span><span class="level-info">3 层　·　${awards[i]?'✦ 完美收藏':i<completed?'已完成':'自由挑战'}</span></span><span class="level-icon">›</span></button>`).join('');
 }
@@ -1615,7 +1687,14 @@ $('undoBtn').addEventListener('click',undo);
 $('hintBtn').addEventListener('click',findHint);
 $('restartBtn').addEventListener('click',resetLayer);
 const gestureMenu=document.createElement('div');gestureMenu.id='gestureMenu';gestureMenu.className='gesture-menu';gestureMenu.hidden=true;gestureMenu.innerHTML='<span class="choice left" data-choice="left"><span class="word">合成</span><span class="arrow">←</span></span><span class="gesture-origin"></span><span class="choice right" data-choice="right"><span class="arrow">→</span><span class="word">消除</span></span>';$('app').appendChild(gestureMenu);const gestureFocus=document.createElement('div');gestureFocus.id='gestureFocus';gestureFocus.hidden=true;gestureFocus.className='gesture-focus';$('app').appendChild(gestureFocus);
-$('jokerSlot').addEventListener('click',()=>{if(!canInput()||!engine.state.joker)return;jokerMode=!jokerMode;renderTray();if(jokerMode)say('选择盘中的两块同级巧克力',1050)});
+const goldCoach=document.createElement('div');goldCoach.id='goldCoach';goldCoach.className='gold-coach';goldCoach.hidden=true;
+ goldCoach.innerHTML='<div class="gold-coach-text">三块最高级，获得万能巧克力。\n可以消除两块同色，也可以留到通关。</div><button type="button">继续</button>';
+ $('app').appendChild(goldCoach);goldCoach.querySelector('button').addEventListener('click',goldCoachDismiss);
+ const goldUseHint=document.createElement('div');goldUseHint.id='goldUseHint';goldUseHint.className='gold-use-hint';goldUseHint.hidden=true;$('app').appendChild(goldUseHint);
+ $('jokerSlot').addEventListener('click',()=>{if(!canInput()||!engine.state.joker)return;
+  jokerMode=!jokerMode;renderTray();
+  if(jokerMode){showGoldUseHint();haptic(8)}else hideGoldHint();
+ });
 $('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))hideDialog()});
 try{completed=Number(localStorage.getItem('choco-progress')||0);awards=JSON.parse(localStorage.getItem('choco-awards-v02')||'{}')}catch{awards={}}
 try{scene=new window.ChocolateScene($('sceneHost'),pick);dish=new window.ChocoDish($('columns'),scene);bindDishSurface();scene.setGame(engine.currentGame());renderGame();restoreRun();showHome();}catch(e){console.error(e);$('sceneHost').innerHTML=`<div style="padding:50px 20px;text-align:center;color:#806654;font-size:15px">3D 渲染暂不可用，请确认浏览器已启用 WebGL。<br><small>${String(e.message).slice(0,140)}</small></div>`;}
